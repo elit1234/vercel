@@ -56,6 +56,23 @@ a {
   max-width: 280px;
 }
 
+.darkIconOuter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 6rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.sunIcon,
+.moonIcon {
+  width: 0;
+  height: 0;
+  transition: all 0.2s;
+}
+
 .blackButton {
   background: var(--altSubForeground);
   font-weight: bold;

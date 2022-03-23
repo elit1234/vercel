@@ -67,7 +67,7 @@
 .home-firstService {
   height: 100%;
   width: 100%;
-  max-width: 400px;
+  max-width: 250px;
   margin: 0 auto;
   height: 450px;
   padding: 0.5rem;
@@ -154,6 +154,7 @@
   .home-firstServices {
     display: flex;
     flex-direction: column;
+    gap: 3rem 0;
     padding-bottom: 8rem;
   }
   .home-dedicatedArea {

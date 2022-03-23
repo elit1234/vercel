@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-// const DarkIcon = dynamic(() => import("./TopBar/DarkIcon"));
+const DarkIcon = dynamic(() => import("./TopBar/DarkIcon"));
 const MenuIcon = dynamic(() => import("./TopBar/MenuIcon"));
 const SideBar = dynamic(() => import("./TopBar/SideBar"));
 
@@ -9,7 +9,7 @@ const Layout = ({ children }: any) => {
       <SideBar />
       <MenuIcon />
 
-      {/* <DarkIcon /> */}
+      <DarkIcon />
       <div>{children && children}</div>
     </div>
   );
