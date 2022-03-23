@@ -56,16 +56,6 @@ a {
   max-width: 280px;
 }
 
-.overlay-home {
-  background: var(--overlay);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
 .blackButton {
   background: var(--altSubForeground);
   font-weight: bold;

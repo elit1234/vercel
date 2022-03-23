@@ -1,5 +1,5 @@
 .home-Wrapper {
-  background: url("/img/home-top.webp") no-repeat center center fixed;
+  background: url("/img/home-top.webp") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -9,7 +9,7 @@
   max-width: 100%;
 }
 .home-Top {
-  height: 40rem;
+  height: 60rem;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
 }
@@ -140,11 +140,29 @@
   font-size: calc(16px + 0.25vw);
 }
 
+.overlay-home {
+  background: var(--overlay);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 25%;
+  align-items: center;
+  gap: 1rem;
+}
+
 @media screen and (max-width: 1000px) {
   .home-firstServices {
     display: flex;
     flex-direction: column;
     padding-bottom: 8rem;
+  }
+  .home-dedicatedArea {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  .home-dedicatedRight {
+    text-align: center;
   }
 }
 @media screen and (min-width: 1000px) {
