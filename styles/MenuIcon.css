@@ -1,0 +1,25 @@
+.firstLine {
+  width: 50%;
+}
+
+.secondLine {
+  width: 100%;
+}
+
+.thirdLine {
+  width: 75%;
+}
+
+.firstLine.checked {
+  transform-origin: bottom;
+  transform: rotatez(45deg) translate(6px, -2px);
+}
+.secondLine.checked {
+  transform-origin: top;
+  transform: rotatez(-45deg);
+}
+.thirdLine.checked {
+  transform-origin: top;
+  width: 50%;
+  transform: translate(28px, -6px) rotatez(45deg);
+}
