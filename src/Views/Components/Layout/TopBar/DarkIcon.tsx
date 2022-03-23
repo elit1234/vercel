@@ -20,11 +20,11 @@ const DarkIcon = () => {
   };
 
   useEffect(() => {
+    const isDark = theme && theme === "dark" ? true : false;
     const sunIcon: HTMLElement = document.querySelector(".sunIcon")!;
     const moonIcon: HTMLElement = document.querySelector(".moonIcon")!;
-
-    sunIcon.style.width = "3rem";
-    sunIcon.style.height = "3rem";
+    if (isDark) sunIcon.style.width = "3rem";
+    else moonIcon.style.width = "3rem";
   }, []);
 
   return (
