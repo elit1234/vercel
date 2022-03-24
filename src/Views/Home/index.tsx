@@ -31,8 +31,11 @@ export default function Home() {
               everything from deep cleans to even dog walking and shopping and
               delivery!
             </div>
-            <div className="home-blackButtonWrapper blackButtonOverlay">
-              <div className="blackButton home-blackButton">Book Now</div>
+            <div
+              className="home-blackButtonWrapper blackButtonOverlay"
+              onClick={() => router.push("/store")}
+            >
+              <div className="blackButton home-blackButton">Shop Now</div>
             </div>
           </div>
         </div>
