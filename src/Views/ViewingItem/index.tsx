@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 
 const ViewingItem = ({ id }: any) => {
@@ -21,7 +22,9 @@ const ViewingItem = ({ id }: any) => {
         <meta itemProp="description" content="Item Description" />
         <meta itemProp="image" content="Image content" />
       </Head>
-      <div className="viewingItemImage" />
+      <div className="viewingItemImage">
+        <Image src="/img/items/1.webp" layout="fill" quality="100" />
+      </div>
       <div className="viewingItemImages">
         <div className="viewingItemImagesImage" />
         <div className="viewingItemImagesImage" />
@@ -64,6 +67,12 @@ const ViewingItem = ({ id }: any) => {
         style={{ margin: "1rem auto" }}
       >
         <div className="blackButton home-blackButton">Add to cart</div>
+      </div>
+      <div className="viewingItem-desc">
+        Dry and ready to burn Bagged Gum firewood for a longer lasting burn.
+        This is best utilised when added to a fire built on a base of softwood
+        such as pine. The type of gum will varies throughout the season but is
+        usually a mixture of blue and red gum.
       </div>
     </div>
   );

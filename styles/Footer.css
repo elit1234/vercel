@@ -1,0 +1,22 @@
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem 0;
+  background: #1f281e;
+  color: #fff;
+  padding: 2rem 2rem 0 2rem;
+  font-size: calc(16px + 0.25vw);
+  min-height: 50rem;
+}
+
+.footer-logo {
+  font-size: 200%;
+  font-weight: bold;
+  white-space: nowrap;
+  padding: 1rem 0 0 0;
+}
+
+.footer-paragraph {
+  padding: 0 2rem;
+  line-height: 2rem;
+}
