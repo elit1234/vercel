@@ -3,9 +3,8 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Layout from "../Components/Layout";
 
-// const Layout = dynamic(() => import("../Components/Layout"));
+const Layout = dynamic(() => import("../Components/Layout"));
 
 export default function Home() {
   const router = useRouter();

@@ -1,8 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import Layout from "../Components/Layout";
 
-// const Layout = dynamic(() => import("../Components/Layout"));
+const Layout = dynamic(() => import("../Components/Layout"));
 
 export default function Store() {
   return (
