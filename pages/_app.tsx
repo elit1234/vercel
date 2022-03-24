@@ -1,6 +1,7 @@
 import "../styles/MenuIcon.css";
 import "../styles/Home.css";
 import "../styles/Store.css";
+import "../styles/ViewingItem.css";
 import "../styles/globals.css";
 import "../styles/sidebar.css";
 import { ThemeProvider } from "next-themes";

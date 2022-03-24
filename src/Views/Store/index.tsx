@@ -1,7 +1,9 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Store() {
+  const router = useRouter();
   const [items, setItems] = useState<ItemType[] | undefined>([
     {
       id: 1,
@@ -54,8 +56,29 @@ export default function Store() {
     },
   ]);
 
-  const clickedItem = (item: ItemType) => {
-    alert("clicked " + item.name);
+  const clickedItem = (item: ItemType, key: number) => {
+    let notItems: any = [];
+    let isItem: any = {};
+    // alert("clicked " + item.name);
+    const items = document.querySelectorAll(".store-product");
+    if (items) {
+      items.forEach((fItem, itemKey) => {
+        if (itemKey !== key) notItems.push(fItem);
+        else isItem = fItem;
+      });
+    }
+    console.log(notItems);
+    notItems &&
+      notItems.map((notItem: HTMLElement) => {
+        setTimeout(() => {
+          router.push("/item/" + item.id);
+        }, 200);
+        notItem.style.width = "0";
+        notItem.style.minWidth = "0";
+        notItem.style.opacity = "0";
+        notItem.style.maxWidth = "0";
+      });
+    console.log(isItem);
   };
 
   return (
@@ -91,7 +114,7 @@ export default function Store() {
                   </div>
                   <div
                     className="addToButton"
-                    onClick={() => clickedItem(item)}
+                    onClick={() => clickedItem(item, key)}
                   >
                     Add to cart
                   </div>
