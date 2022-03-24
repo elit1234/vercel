@@ -5,11 +5,14 @@ import "../styles/sidebar.css";
 import { ThemeProvider } from "next-themes";
 
 import type { AppProps } from "next/app";
+import Layout from "../src/Views/Components/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   );
 }

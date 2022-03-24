@@ -1,10 +1,7 @@
 import Head from "next/head";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-
-const Layout = dynamic(() => import("../Components/Layout"));
 
 export default function Home() {
   const router = useRouter();
@@ -14,7 +11,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Home</title>
         <meta name="description" content="Page description" />
@@ -124,6 +121,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }

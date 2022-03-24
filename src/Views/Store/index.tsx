@@ -1,11 +1,8 @@
 import Head from "next/head";
-import dynamic from "next/dynamic";
-
-const Layout = dynamic(() => import("../Components/Layout"));
 
 export default function Store() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Store</title>
         <meta name="description" content="Page description" />
@@ -26,6 +23,6 @@ export default function Store() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
