@@ -10,6 +10,7 @@ const Layout = ({ children }: any) => {
       <MenuIcon />
 
       <DarkIcon />
+      <div className="topNav-outer" />
       <div>{children && children}</div>
     </div>
   );
