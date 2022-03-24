@@ -42,20 +42,6 @@ a {
   background: var(--color);
 }
 
-.sidebarWrapper {
-  background: var(--foreground);
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 0;
-  z-index: 1;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 1s;
-  max-width: 280px;
-}
-
 .darkIconOuter {
   position: fixed;
   top: 0;

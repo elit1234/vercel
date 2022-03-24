@@ -51,7 +51,7 @@ const DarkIcon = () => {
           xmlns="http://www.w3.org/2000/svg"
           enableBackground="new 0 0 24 24"
           viewBox="0 0 24 24"
-          fill="#000"
+          fill="#6906e3"
         >
           <g>
             <rect fill="none" height="24" width="24" />
