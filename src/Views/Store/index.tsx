@@ -2,7 +2,7 @@ import Head from "next/head";
 
 export default function Store() {
   return (
-    <>
+    <div>
       <Head>
         <title>Store</title>
         <meta name="description" content="Page description" />
@@ -10,19 +10,23 @@ export default function Store() {
         <meta itemProp="description" content="Item Description" />
         <meta itemProp="image" content="Image content" />
       </Head>
-      <div className="home-Wrapper">
-        <div className="home-Top">
-          <div className="overlay-home topOverlay">
-            <div className="home-sectionTitle">Our Store</div>
-            <div className="home-paragraph">
-              Flawless LLC provides exceptional full-service house cleaning
-              services for Chicago and the surround metro area. We can do
-              everything from deep cleans to even dog walking and shopping and
-              delivery!
-            </div>
+      <div className="store-Wrapper">
+        <div className="store-Top">
+          <div className="overlay-store topOverlay">
+            <h1>Our Store</h1>
           </div>
         </div>
       </div>
-    </>
+      <div className="store-Outer">
+        <div>Sort By Latest</div>
+        <div className="store-productCategories">Product Categories</div>
+        <div className="store-products">
+          <div className="store-product">First</div>
+          <div className="store-product">Second</div>
+          <div className="store-product">Third</div>
+          <div className="store-product">Fourth</div>
+        </div>
+      </div>
+    </div>
   );
 }

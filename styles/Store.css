@@ -1,0 +1,55 @@
+.store-Outer {
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 2rem 0;
+}
+
+.store-Wrapper {
+  background: url("/img/store-top.webp") no-repeat center center local;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  max-width: 100%;
+}
+.store-Top {
+  height: 30rem;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+}
+
+.store-productCategories {
+  padding-top: 5rem;
+}
+
+.store-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  justify-items: center;
+  gap: 0.5rem;
+}
+
+.store-product {
+  height: 100%;
+  width: 100%;
+  max-width: 200px;
+  min-height: 10rem;
+  background: var(--foreground);
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+}
+
+.overlay-store {
+  background: var(--overlay);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
