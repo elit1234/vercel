@@ -33,15 +33,32 @@
   gap: 0.5rem;
 }
 
+@media screen and (min-width: 375px) {
+  .store-products {
+    gap: 5vw;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .store-products {
+    gap: 3vw;
+  }
+  .store-product {
+    width: 18vw;
+    min-width: 160px;
+  }
+}
+
 .store-product {
   height: 100%;
   width: 100%;
-  max-width: 200px;
-  min-height: 10rem;
+  max-width: 280px;
+  min-height: 20rem;
   background: var(--foreground);
   padding: 1rem;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem 0;
 }
 
 .overlay-store {
@@ -52,4 +69,73 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.store-productImage {
+  height: 143px;
+  width: 100%;
+  background: red;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.store-product:hover > .store-productImage {
+  transform: scale(1.05);
+}
+
+.store-productTitle {
+  font-weight: bold;
+  font-size: calc(18px + 0.25vw);
+}
+
+.addToButton {
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: auto 5px 0 0;
+  overflow: visible;
+  padding: 12px 40px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.addToButton:focus {
+  text-decoration: none;
+}
+
+.addToButton:hover {
+  text-decoration: none;
+}
+
+.addToButton:active {
+  box-shadow: rgba(0, 0, 0, 0.125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.addToButton:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .addToButton {
+    padding: 12px 50px;
+  }
 }

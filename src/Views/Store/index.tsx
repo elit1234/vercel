@@ -1,6 +1,63 @@
 import Head from "next/head";
+import { useState } from "react";
 
 export default function Store() {
+  const [items, setItems] = useState<ItemType[] | undefined>([
+    {
+      id: 1,
+      name: "Dry bagged pine",
+      price: 150,
+    },
+    {
+      id: 2,
+      name: "Second",
+      price: 300,
+    },
+    {
+      id: 3,
+      name: "Third",
+      price: 500,
+    },
+    {
+      id: 4,
+      name: "Fourth",
+      price: 10000,
+    },
+    {
+      id: 5,
+      name: "Fifth",
+    },
+    {
+      id: 6,
+      name: "Six6h",
+      price: 600,
+    },
+    {
+      id: 6,
+      name: "Six6h",
+      price: 600,
+    },
+    {
+      id: 6,
+      name: "Six6h",
+      price: 600,
+    },
+    {
+      id: 6,
+      name: "Six6h",
+      price: 600,
+    },
+    {
+      id: 6,
+      name: "Six6h",
+      price: 600,
+    },
+  ]);
+
+  const clickedItem = (item: ItemType) => {
+    alert("clicked " + item.name);
+  };
+
   return (
     <div>
       <Head>
@@ -21,10 +78,26 @@ export default function Store() {
         <div>Sort By Latest</div>
         <div className="store-productCategories">Product Categories</div>
         <div className="store-products">
-          <div className="store-product">First</div>
-          <div className="store-product">Second</div>
-          <div className="store-product">Third</div>
-          <div className="store-product">Fourth</div>
+          {items &&
+            items.map((item, key) => {
+              return (
+                <div className="store-product" key={key}>
+                  <div className="store-productImage" />
+                  <div className="store-productTitle">{item.name}</div>
+                  <div className="store-productPrice">
+                    {item.price
+                      ? `$${Number(item.price / 100).toFixed(2)}`
+                      : ""}
+                  </div>
+                  <div
+                    className="addToButton"
+                    onClick={() => clickedItem(item)}
+                  >
+                    Add to cart
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
