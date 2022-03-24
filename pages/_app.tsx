@@ -5,7 +5,9 @@ import "../styles/sidebar.css";
 import { ThemeProvider } from "next-themes";
 
 import type { AppProps } from "next/app";
-import Layout from "../src/Views/Components/Layout";
+import dynamic from "next/dynamic";
+// import Layout from "../src/Views/Components/Layout";
+const Layout = dynamic(() => import("../src/Views/Components/Layout"));
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
