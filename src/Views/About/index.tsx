@@ -15,10 +15,10 @@ export default function About() {
           <div className="overlay-home topOverlay">
             <div className="home-sectionTitle">About Us</div>
             <div className="home-paragraph">
-              Flawless LLC provides exceptional full-service house cleaning
-              services for Chicago and the surround metro area. We can do
-              everything from deep cleans to even dog walking and shopping and
-              delivery!
+              Orci varius natoque penatibus et magnis dis parturient montes,
+              nascetur ridiculus mus. Mauris vel eros cursus, malesuada diam
+              dictum, volutpat nulla. Quisque in orci a lorem egestas maximus
+              vitae sed nisl.
             </div>
           </div>
         </div>

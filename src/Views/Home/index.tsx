@@ -43,40 +43,40 @@ export default function Home() {
           <div className="home-firstServiceImageWrapper">
             <Image src="/img/service1.webp" layout="fill" alt="Service1" />
           </div>
-          <div className="home-firstServiceTitle">Bathroom Cleaning</div>
+          <div className="home-firstServiceTitle">Service Name</div>
           <div className="home-firstServiceDesc">
-            Includes scrubbing and washing all surfaces, sinks, faucets,
-            showers, mirrors, counter tops, everything in-between
+            Fusce tortor arcu, volutpat sed porta in, venenatis non augue.
+            Integer at dui ac tellus mollis molestie vitae tempor est.
           </div>
         </div>
         <div className="subColour home-firstService">
           <div className="home-firstServiceImageWrapper">
             <Image src="/img/service2.webp" layout="fill" alt="Service2" />
           </div>
-          <div className="home-firstServiceTitle">Kitchen Cleaning</div>
+          <div className="home-firstServiceTitle">Service Name</div>
           <div className="home-firstServiceDesc">
-            We perform a complete surface wipe-down of all appliances such a
-            ovens, fridge, cabinets, fans, etc. with vacuuming and mopping.
+            Fusce tortor arcu, volutpat sed porta in, venenatis non augue.
+            Integer at dui ac tellus mollis molestie vitae tempor est.
           </div>
         </div>
         <div className="subColour home-firstService">
           <div className="home-firstServiceImageWrapper">
             <Image src="/img/service3.webp" layout="fill" alt="Service3" />
           </div>
-          <div className="home-firstServiceTitle">Living Room Cleaning</div>
+          <div className="home-firstServiceTitle">Service Name</div>
           <div className="home-firstServiceDesc">
-            We address every part of the room and includes vacuuming, dusting,
-            wood polish, glass cleaning, and more.
+            Fusce tortor arcu, volutpat sed porta in, venenatis non augue.
+            Integer at dui ac tellus mollis molestie vitae tempor est.
           </div>
         </div>
         <div className="subColour home-firstService">
           <div className="home-firstServiceImageWrapper">
             <Image src="/img/service4.webp" layout="fill" alt="Service4" />
           </div>
-          <div className="home-firstServiceTitle">Appliance Deep Clean</div>
+          <div className="home-firstServiceTitle">Service Name</div>
           <div className="home-firstServiceDesc">
-            Have a grease stained oven or cloudy fridge drawers? We deep clean
-            every inch of your appliances till they're spotless.
+            Fusce tortor arcu, volutpat sed porta in, venenatis non augue.
+            Integer at dui ac tellus mollis molestie vitae tempor est.
           </div>
         </div>
       </div>
@@ -84,8 +84,11 @@ export default function Home() {
         className="home-blackButtonWrapper blackButtonOverlay"
         style={{ margin: "0 auto" }}
       >
-        <div className="blackButton home-blackButton">
-          All Cleaning Services
+        <div
+          className="blackButton home-blackButton"
+          onClick={() => router.push("/about")}
+        >
+          All Our Services
         </div>
       </div>
 

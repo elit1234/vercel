@@ -1,10 +1,28 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ViewingItem = ({ id }: any) => {
   const [amount, setAmount] = useState<number>(1);
+  const [item, setItem] = useState<ItemType>();
+  const [loading, setLoading] = useState<boolean>(true);
 
+  useEffect(() => {
+    fetch("http://localhost:3000/api/getItem", {
+      method: "POST",
+      body: id,
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setItem(data);
+        setLoading(false);
+        console.log(data);
+      });
+  }, []);
   const clickedMore = () => {
     setAmount(amount + 1);
   };
@@ -29,8 +47,10 @@ const ViewingItem = ({ id }: any) => {
         <div className="viewingItemImagesImage" />
         <div className="viewingItemImagesImage" />
       </div>
-      <div className="viewingItem-title">This Item Name</div>
-      <div className="viewingItem-price">$15.00</div>
+      <div className="viewingItem-title">{item && item.name}</div>
+      <div className="viewingItem-price">
+        {item && `$${Number(item.price / 100).toFixed(2)}`}
+      </div>
       <div className="viewingItem-totalsWrapper">
         <div
           className="viewingItem-totalsTotal"

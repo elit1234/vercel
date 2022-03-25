@@ -28,6 +28,7 @@ export default function Store() {
     {
       id: 5,
       name: "Fifth",
+      price: 50,
     },
     {
       id: 6,
@@ -116,7 +117,7 @@ export default function Store() {
                     className="addToButton"
                     onClick={() => clickedItem(item, key)}
                   >
-                    Add to cart
+                    View Options
                   </div>
                 </div>
               );
