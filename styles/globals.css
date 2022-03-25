@@ -52,6 +52,19 @@ a {
   z-index: 2;
 }
 
+.cartIcon-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.cartIcon-outer > svg {
+  fill: var(--color);
+  transition: all 0.5s ease;
+}
+
 .sunIcon,
 .moonIcon {
   width: 0;

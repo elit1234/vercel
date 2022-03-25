@@ -9,7 +9,8 @@ import { ThemeProvider } from "next-themes";
 
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Cart from "../src/Views/Cart";
 // import Layout from "../src/Views/Components/Layout";
 const Layout = dynamic(() => import("../src/Views/Components/Layout"));
 const Footer = dynamic(() => import("../src/Views/Components/Footer"));
@@ -20,10 +21,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       const topNav: HTMLElement = document.querySelector(".topNav-outer")!;
 
       window.addEventListener("scroll", () => {
-        if (lastScrolled > window.scrollY) {
-          topNav.style.background = "rgba(88, 88, 88, 1)";
-        } else {
-          topNav.style.background = "transparent";
+        const newScroll = window.scrollY;
+        if (topNav) {
+          if (lastScrolled > newScroll || newScroll < 10) {
+            topNav.style.opacity = "1";
+          } else {
+            topNav.style.opacity = "0";
+          }
         }
 
         lastScrolled = window.scrollY;
@@ -34,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <Layout>
+        <Cart />
         <Component {...pageProps} />
         <Footer />
       </Layout>
