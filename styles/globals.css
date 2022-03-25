@@ -52,6 +52,42 @@ a {
   z-index: 2;
 }
 
+@media screen and (max-width: 600px) {
+  .darkIconOuter > svg {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  .cartIcon-outer {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  .homeIcon-outer > svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    z-index: 2;
+  }
+}
+
+.topBarName {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 5rem;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+  text-align: center;
+  font-size: calc(18px + 0.5vw);
+  transition: all 0.5s ease;
+}
 .cartIcon-outer {
   position: fixed;
   top: 0;
@@ -61,6 +97,21 @@ a {
   z-index: 2;
 }
 .cartIcon-outer > svg {
+  fill: var(--color);
+  transition: all 0.5s ease;
+}
+
+.homeIcon-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 1rem;
+  margin-left: 6rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.homeIcon-outer > svg {
   fill: var(--color);
   transition: all 0.5s ease;
 }
@@ -114,6 +165,12 @@ a {
   max-height: 100%;
 }
 
+@media screen and (max-height: 700px) {
+  .layout-wrapper {
+    padding-top: 5rem;
+  }
+}
+
 .menuIcon-outer {
   width: 3rem;
   height: 4rem;
@@ -130,4 +187,9 @@ a {
   height: 7px;
   margin: 7px 0;
   transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.sideBarDark > svg {
+  height: 3rem !important;
+  width: 3rem !important;
 }

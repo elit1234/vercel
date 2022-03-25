@@ -5,6 +5,7 @@ import "../styles/ViewingItem.css";
 import "../styles/Footer.css";
 import "../styles/globals.css";
 import "../styles/sidebar.css";
+import "../styles/Cart.css";
 import { ThemeProvider } from "next-themes";
 
 import type { AppProps } from "next/app";
@@ -19,14 +20,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (typeof window !== "undefined") {
       let lastScrolled = window.scrollY;
       const topNav: HTMLElement = document.querySelector(".topNav-outer")!;
+      const topBarName: HTMLElement = document.querySelector(".topBarName")!;
 
       window.addEventListener("scroll", () => {
         const newScroll = window.scrollY;
         if (topNav) {
           if (lastScrolled > newScroll || newScroll < 10) {
             topNav.style.opacity = "1";
+            topBarName.style.opacity = "1";
           } else {
             topNav.style.opacity = "0";
+            topBarName.style.opacity = "0";
           }
         }
 

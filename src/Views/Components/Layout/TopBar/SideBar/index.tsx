@@ -1,10 +1,29 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import toggleFunc from "./toggleFunc";
+import { useEffect, useState } from "react";
+
+const DarkIcon = dynamic(() => import("../DarkIcon"));
 
 const SideBar = () => {
   const router = useRouter();
   const path = router.pathname;
+  const [width, setWidth] = useState(
+    typeof window === "undefined" ? 0 : window.innerWidth
+  );
+
+  const updateDimensions = () => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+      console.log(window.innerWidth);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   return (
     <div className="sidebarWrapper">
       <Link href="/" passHref>
@@ -35,6 +54,7 @@ const SideBar = () => {
           Store
         </a>
       </Link>
+      {width && width < 600 && <DarkIcon sideBar={true} />}
     </div>
   );
 };

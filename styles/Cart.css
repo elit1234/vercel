@@ -1,10 +1,25 @@
 .cart-wrapper {
   position: fixed;
-  z-index: 4;
+  z-index: 2;
   top: 0;
   left: 0;
-  margin: 5rem;
   height: 100vh;
-  width: 280px;
+  width: 0;
+  visibility: hidden;
+  opacity: 0;
   background: red;
+  transition: all 0.5s ease;
+}
+
+.cart-wrapper.active {
+  visibility: initial;
+  opacity: 1;
+  width: 280px;
+}
+
+.cart-closeIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
 }

@@ -22,14 +22,12 @@ export default function Home() {
       <div className="home-Wrapper">
         <div className="home-Top">
           <div className="overlay-home topOverlay">
-            <div className="home-sectionTitle">
-              Chicago's House Cleaning Professionals
-            </div>
+            <div className="home-sectionTitle">Business Name Goes Here</div>
             <div className="home-paragraph">
-              Flawless LLC provides exceptional full-service house cleaning
-              services for Chicago and the surround metro area. We can do
-              everything from deep cleans to even dog walking and shopping and
-              delivery!
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              faucibus id eros eget malesuada. Mauris cursus rhoncus fringilla.
+              Etiam fringilla viverra lorem, a tincidunt libero tempor in. Donec
+              ut odio at neque dictum dignissim.
             </div>
             <div
               className="home-blackButtonWrapper blackButtonOverlay"
