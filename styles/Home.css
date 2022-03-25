@@ -156,6 +156,12 @@
   gap: 1rem;
 }
 
+@media screen and (max-height: 700px) {
+  .overlay-home {
+    padding-top: 5rem;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .home-firstServices {
     display: flex;

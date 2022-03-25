@@ -165,12 +165,6 @@ a {
   max-height: 100%;
 }
 
-@media screen and (max-height: 700px) {
-  .layout-wrapper {
-    padding-top: 5rem;
-  }
-}
-
 .menuIcon-outer {
   width: 3rem;
   height: 4rem;
