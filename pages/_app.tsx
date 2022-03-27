@@ -1,3 +1,11 @@
+import { ThemeProvider } from "next-themes";
+
+import type { AppProps } from "next/app";
+import dynamic from "next/dynamic";
+import { useEffect } from "react";
+import Cart from "../src/Views/Cart";
+import { wrapper } from "../src/redux/store";
+
 import "../styles/MenuIcon.css";
 import "../styles/Home.css";
 import "../styles/Store.css";
@@ -6,13 +14,7 @@ import "../styles/Footer.css";
 import "../styles/globals.css";
 import "../styles/sidebar.css";
 import "../styles/Cart.css";
-import { ThemeProvider } from "next-themes";
 
-import type { AppProps } from "next/app";
-import dynamic from "next/dynamic";
-import { useEffect } from "react";
-import Cart from "../src/Views/Cart";
-// import Layout from "../src/Views/Components/Layout";
 const Layout = dynamic(() => import("../src/Views/Components/Layout"));
 const Footer = dynamic(() => import("../src/Views/Components/Footer"));
 function MyApp({ Component, pageProps }: AppProps) {
@@ -50,4 +52,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+MyApp.getServerSideProps = wrapper.getInitialAppProps();
+
+export default wrapper.withRedux(MyApp);

@@ -7,22 +7,20 @@ const ViewingItem = ({ id }: any) => {
   const [item, setItem] = useState<ItemType>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/api/getItem", {
-      method: "POST",
-      body: id,
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+  const loadItem = async () => {
+    const hostname = window.location.hostname;
+    const url = `http://${hostname}:3000/api/getItem/${id}`;
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setItem(data);
         setLoading(false);
-        console.log(data);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    if (id) loadItem();
+  }, [id]);
   const clickedMore = () => {
     setAmount(amount + 1);
   };

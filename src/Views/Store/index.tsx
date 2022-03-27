@@ -1,61 +1,23 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Store() {
   const router = useRouter();
-  const [items, setItems] = useState<ItemType[] | undefined>([
-    {
-      id: 1,
-      name: "Dry bagged pine",
-      price: 150,
-    },
-    {
-      id: 2,
-      name: "Second",
-      price: 300,
-    },
-    {
-      id: 3,
-      name: "Third",
-      price: 500,
-    },
-    {
-      id: 4,
-      name: "Fourth",
-      price: 10000,
-    },
-    {
-      id: 5,
-      name: "Fifth",
-      price: 50,
-    },
-    {
-      id: 6,
-      name: "Six6h",
-      price: 600,
-    },
-    {
-      id: 6,
-      name: "Six6h",
-      price: 600,
-    },
-    {
-      id: 6,
-      name: "Six6h",
-      price: 600,
-    },
-    {
-      id: 6,
-      name: "Six6h",
-      price: 600,
-    },
-    {
-      id: 6,
-      name: "Six6h",
-      price: 600,
-    },
-  ]);
+  const [items, setItems] = useState<ItemType[] | undefined>([]);
+
+  const loadItems = async () => {
+    const hostname = window.location.hostname;
+    fetch(`http://${hostname}:3000/api/getItems`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) setItems(data);
+      });
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") loadItems();
+  }, []);
 
   const clickedItem = (item: ItemType, key: number) => {
     let notItems: any = [];
