@@ -39,7 +39,13 @@ const ViewingItem = ({ id }: any) => {
         <meta itemProp="image" content="Image content" />
       </Head>
       <div className="viewingItemImage">
-        <Image src="/img/items/1.webp" layout="fill" quality="100" />
+        <Image
+          placeholder="blur"
+          blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOc2H65HgAGCAJswVTsTgAAAABJRU5ErkJggg=="
+          src="/img/items/1.webp"
+          layout="fill"
+          quality="100"
+        />
       </div>
       <div className="viewingItemImages">
         <div className="viewingItemImagesImage" />
