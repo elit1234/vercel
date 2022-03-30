@@ -41,10 +41,10 @@ const ViewingItem = ({ id }: any) => {
       <div className="viewingItemImage">
         <Image
           placeholder="blur"
-          blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOc2H65HgAGCAJswVTsTgAAAABJRU5ErkJggg=="
           src="/img/items/1.webp"
           layout="fill"
           quality="100"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNc+B0AAj8BmmO6jVoAAAAASUVORK5CYII="
         />
       </div>
       <div className="viewingItemImages">
