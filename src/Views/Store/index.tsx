@@ -20,9 +20,9 @@ export default function Store() {
   }, []);
 
   const clickedItem = (item: ItemType, key: number) => {
+    router.prefetch(`/item/${item.id}`);
     let notItems: any = [];
     let isItem: any = {};
-    // alert("clicked " + item.name);
     const items = document.querySelectorAll(".store-product");
     if (items) {
       items.forEach((fItem, itemKey) => {
