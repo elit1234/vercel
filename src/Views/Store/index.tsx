@@ -12,6 +12,7 @@ export default function Store() {
       .then((res) => res.json())
       .then((data) => {
         if (data) setItems(data);
+        router.prefetch("/item/1");
       });
   };
 
@@ -20,7 +21,6 @@ export default function Store() {
   }, []);
 
   const clickedItem = (item: ItemType, key: number) => {
-    router.prefetch(`/item/${item.id}`);
     let notItems: any = [];
     let isItem: any = {};
     const items = document.querySelectorAll(".store-product");
