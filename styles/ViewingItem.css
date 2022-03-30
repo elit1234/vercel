@@ -11,7 +11,7 @@
 
 .viewingItemImage {
   position: relative;
-  max-width: 40rem;
+  max-width: 400px;
   width: 100%;
   height: 30rem;
   max-height: 60vh;
