@@ -5,8 +5,10 @@ import { useRouter } from "next/router";
 
 export default function Home() {
   const router = useRouter();
-  router.prefetch("/about");
-  router.prefetch("/store");
+  useEffect(() => {
+    router.prefetch("/about");
+    router.prefetch("/store");
+  }, [router]);
 
   return (
     <>
