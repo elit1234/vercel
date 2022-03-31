@@ -13,6 +13,7 @@ const ViewingItem = ({ id }: any) => {
       .then((res) => res.json())
       .then((data) => {
         setItem(data);
+        console.log(data);
       });
   };
 
@@ -42,7 +43,7 @@ const ViewingItem = ({ id }: any) => {
           src="/img/items/1.webp"
           layout="fill"
           quality="100"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mMU/Q8AAS8BFm95G6AAAAAASUVORK5CYII="
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOU/w8AAUMBICWqKI4AAAAASUVORK5CYII="
         />
       </div>
       <div className="viewingItemImages">
