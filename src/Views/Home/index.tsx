@@ -2,6 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+
+const Footer = dynamic(() => import("../Components/Footer"));
 
 export default function Home() {
   const router = useRouter();
@@ -125,6 +128,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

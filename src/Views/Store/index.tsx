@@ -1,6 +1,9 @@
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+const Footer = dynamic(() => import("../Components/Footer"));
 
 export default function Store() {
   const router = useRouter();
@@ -86,6 +89,7 @@ export default function Store() {
             })}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
