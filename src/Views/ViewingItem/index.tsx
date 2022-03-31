@@ -42,6 +42,7 @@ const ViewingItem = ({ id }: any) => {
           src="/img/items/1.webp"
           layout="fill"
           quality="100"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mMU/Q8AAS8BFm95G6AAAAAASUVORK5CYII="
         />
       </div>
       <div className="viewingItemImages">
