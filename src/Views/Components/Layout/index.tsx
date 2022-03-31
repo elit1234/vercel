@@ -4,6 +4,7 @@ import HomeIcon from "./TopBar/HomeIcon";
 const DarkIcon = dynamic(() => import("./TopBar/DarkIcon"));
 const MenuIcon = dynamic(() => import("./TopBar/MenuIcon"));
 const SideBar = dynamic(() => import("./TopBar/SideBar"));
+const Footer = dynamic(() => import("../Footer"));
 
 const Layout = ({ children }: any) => {
   return (
@@ -16,6 +17,7 @@ const Layout = ({ children }: any) => {
       <div className="topNav-outer" />
       <div className="topBarName">Biz Name</div>
       <div>{children && children}</div>
+      <Footer />
     </div>
   );
 };

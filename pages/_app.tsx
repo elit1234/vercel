@@ -17,7 +17,6 @@ import "../styles/sidebar.css";
 import "../styles/Cart.css";
 
 const Layout = dynamic(() => import("../src/Views/Components/Layout"));
-const Footer = dynamic(() => import("../src/Views/Components/Footer"));
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
@@ -54,7 +53,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Cart />
         <Component {...pageProps} />
-        {!loading && <Footer />}
       </Layout>
     </ThemeProvider>
   );
