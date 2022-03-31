@@ -44,3 +44,12 @@
   z-index: 1;
   transition: opacity 0.4s ease;
 }
+
+.mobileDarkIcon {
+  width: 0;
+  animation: all 0.5s ease;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 1rem 3rem 0;
+}

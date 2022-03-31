@@ -3,6 +3,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import toggleFunc from "./toggleFunc";
 import { useEffect, useState } from "react";
+import SidebarDark from "./SidebarDark";
 
 const DarkIcon = dynamic(() => import("../DarkIcon"));
 
@@ -55,6 +56,7 @@ const SideBar = () => {
         </a>
       </Link>
       {width && width < 600 && <DarkIcon sideBar={true} />}
+      {width && width < 600 && <SidebarDark />}
     </div>
   );
 };

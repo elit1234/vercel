@@ -1,8 +1,9 @@
 import { ThemeProvider } from "next-themes";
-
+import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import Cart from "../src/Views/Cart";
 import { wrapper } from "../src/redux/store";
 
@@ -18,6 +19,13 @@ import "../styles/Cart.css";
 const Layout = dynamic(() => import("../src/Views/Components/Layout"));
 const Footer = dynamic(() => import("../src/Views/Components/Footer"));
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", () => setLoading(true));
+    router.events.on("routeChangeComplete", () => setLoading(false));
+  }, []);
   useEffect(() => {
     if (typeof window !== "undefined") {
       let lastScrolled = window.scrollY;
@@ -46,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Cart />
         <Component {...pageProps} />
-        <Footer />
+        {!loading && <Footer />}
       </Layout>
     </ThemeProvider>
   );
