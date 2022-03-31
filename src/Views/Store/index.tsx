@@ -7,7 +7,26 @@ const Footer = dynamic(() => import("../Components/Footer"));
 
 export default function Store() {
   const router = useRouter();
-  const [items, setItems] = useState<ItemType[] | undefined>([]);
+  const [items, setItems] = useState<any>([
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+    {
+      id: 5,
+    },
+    {
+      id: 6,
+    },
+  ]);
 
   const loadItems = async () => {
     const hostname = window.location.hostname;
