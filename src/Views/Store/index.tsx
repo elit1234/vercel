@@ -75,12 +75,8 @@ export default function Store() {
         <meta itemProp="description" content="Item Description" />
         <meta itemProp="image" content="Image content" />
       </Head>
-      <div className="store-Wrapper">
-        <div className="store-Top">
-          <div className="overlay-store topOverlay">
-            <h1>Our Store</h1>
-          </div>
-        </div>
+      <div style={{ paddingTop: "7rem", paddingLeft: "1rem" }}>
+        <h1>Our Store</h1>
       </div>
       <div className="store-Outer">
         <div>Sort By Latest</div>
