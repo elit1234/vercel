@@ -29,6 +29,15 @@ const ViewingItem = ({ id }: any) => {
     if (amount > 1) setAmount(amount - 1);
   };
 
+  useEffect(() => {
+    typeof window !== "undefined" &&
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+  }, []);
+
   return (
     <div className="viewingItem">
       <Head>
@@ -39,11 +48,7 @@ const ViewingItem = ({ id }: any) => {
         <meta itemProp="image" content="Image content" />
       </Head>
       <div className="viewingItemImage">
-        {loading && (
-          <div className="viewingItem-skeleton">
-            <div className="viewingItem-skeleton-item" />
-          </div>
-        )}
+        {loading && <div className="viewingItem-skeleton" />}
         <Image
           src="/img/items/1.webp"
           layout="fill"
