@@ -106,6 +106,7 @@
 
 .viewingItem-optionsWrapper.error {
   border: 0.3rem solid red;
+  border-radius: 1rem;
 }
 
 .viewingItem-optionsWrapper.active {
