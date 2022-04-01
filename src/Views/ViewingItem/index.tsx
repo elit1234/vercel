@@ -45,7 +45,7 @@ const ViewingItem = ({ id }: any) => {
             src="/img/items/1.webp"
             layout="fill"
             quality="100"
-            onLoad={() => {
+            onLoadingComplete={() => {
               setLoading(false);
               console.log("loaded");
             }}
