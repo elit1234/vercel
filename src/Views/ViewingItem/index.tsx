@@ -259,6 +259,7 @@ const ViewingItem = ({ id }: any) => {
                           styles={selectCustomStyles}
                           onChange={(e) => clickedSelect(key, e)}
                           value={getValues(key)}
+                          isSearchable={false}
                         />
                       </div>
                     </div>
