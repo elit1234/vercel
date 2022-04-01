@@ -9,6 +9,7 @@ const ViewingItem = ({ id }: any) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [values, setValues] = useState<any>();
+  const [error, setError] = useState<boolean>(false);
 
   const [options, setOptions] = useState([
     {
@@ -112,6 +113,7 @@ const ViewingItem = ({ id }: any) => {
       ".viewingItem-optionsWrapper"
     )!;
     optionsWrapper.style.height = "5rem";
+    setError(false);
   };
 
   const clickedSelect = (key: number, e: any) => {
@@ -136,6 +138,10 @@ const ViewingItem = ({ id }: any) => {
         }
       });
     return newArr;
+  };
+
+  const clickedAdd = () => {
+    setError(true);
   };
 
   return (
@@ -230,6 +236,8 @@ const ViewingItem = ({ id }: any) => {
         className={
           showOptions
             ? "viewingItem-optionsWrapper active"
+            : error
+            ? "viewingItem-optionsWrapper error"
             : "viewingItem-optionsWrapper"
         }
         onClick={() => {
@@ -272,6 +280,7 @@ const ViewingItem = ({ id }: any) => {
       <div
         className="home-blackButtonWrapper blackButtonOverlay"
         style={{ margin: "1rem auto" }}
+        onClick={() => clickedAdd()}
       >
         <div className="blackButton home-blackButton">Add to cart</div>
       </div>
