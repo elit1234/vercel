@@ -75,7 +75,7 @@
 .store-productImage {
   height: 143px;
   width: 100%;
-  background: red;
+  background: var(--altSubForeground);
   transition: all 0.5s ease;
   cursor: pointer;
 }

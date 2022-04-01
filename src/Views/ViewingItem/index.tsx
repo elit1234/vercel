@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const ViewingItem = ({ id }: any) => {
   const [amount, setAmount] = useState<number>(1);
   const [item, setItem] = useState<ItemType>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   const loadItem = async () => {
     const hostname = window.location.hostname;
@@ -38,17 +39,36 @@ const ViewingItem = ({ id }: any) => {
         <meta itemProp="image" content="Image content" />
       </Head>
       <div className="viewingItemImage">
-        <Image
-          placeholder="blur"
-          src="/img/items/1.webp"
-          layout="fill"
-          quality="100"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOU/w8AAUMBICWqKI4AAAAASUVORK5CYII="
-        />
+        {!loading ? (
+          <Image
+            placeholder="blur"
+            src="/img/items/1.webp"
+            layout="fill"
+            quality="100"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOU/w8AAUMBICWqKI4AAAAASUVORK5CYII="
+            onLoad={() => setLoading(false)}
+          />
+        ) : (
+          <div className="viewingItem-skeleton">
+            <div className="viewingItem-skeleton-item" />
+          </div>
+        )}
       </div>
       <div className="viewingItemImages">
-        <div className="viewingItemImagesImage" />
-        <div className="viewingItemImagesImage" />
+        <div
+          className={
+            loading
+              ? "viewingItemImagesImage loading"
+              : "viewingItemImagesImage"
+          }
+        />
+        <div
+          className={
+            loading
+              ? "viewingItemImagesImage loading"
+              : "viewingItemImagesImage"
+          }
+        />
       </div>
       <div className="viewingItem-title">{item && item.name}</div>
       <div className="viewingItem-price">
