@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Cart />
         <div id="toast">
-          <div id="img">Icon</div>
+          <div id="toastImg" />
           <div id="toastDesc" />
         </div>
         <Component {...pageProps} />

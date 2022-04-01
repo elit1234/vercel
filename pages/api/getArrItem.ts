@@ -7,7 +7,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  const itemIds: any[] = req.body;
+
+  console.log(itemIds);
   let items: ItemType[] = [];
+  let returnItems: ItemType[] = [];
 
   const keys = await redis.keys("item *");
 
@@ -20,5 +24,12 @@ export default async function handler(
     data.map((itemData) => {
       items.push(JSON.parse(itemData[1]));
     });
-  res.status(200).json(items);
+
+  if (items && items[0]) {
+    items.map((item) => {
+      if (itemIds.includes(item.id)) returnItems.push(item);
+    });
+  }
+
+  res.status(200).json(returnItems);
 }

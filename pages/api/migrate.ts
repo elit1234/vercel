@@ -11,6 +11,44 @@ export default async function handler(
       id: 1,
       name: "Dry bagged pine",
       price: 150,
+      options: [
+        {
+          label: "Size",
+          required: true,
+          subOptions: [
+            {
+              value: "small",
+              label: "Small",
+            },
+            {
+              value: "medium",
+              label: "Medium",
+            },
+            {
+              value: "large",
+              label: "Large",
+            },
+          ],
+        },
+        {
+          label: "Colour",
+          required: true,
+          subOptions: [
+            {
+              value: "grey",
+              label: "Grey",
+            },
+            {
+              value: "black",
+              label: "Black",
+            },
+            {
+              value: "orange",
+              label: "Orange",
+            },
+          ],
+        },
+      ],
     },
     {
       id: 2,

@@ -1,30 +1,50 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useAppDispatch, removeFromCart } from "../../redux/cart";
 
 const Cart = () => {
-  const items = useSelector((state: any) => state.cart && state.cart.items);
+  const dispatch = useAppDispatch();
+
+  const cartItems = useSelector((state: any) => state.cart && state.cart.items);
+  const [items, setItems] = useState<any>(null);
 
   const loadItems = async () => {
     const itemIds: number[] = [];
-    items &&
-      items.map((item: any) => {
+    cartItems &&
+      cartItems.map((item: any) => {
         itemIds.indexOf(item.id) === -1 && itemIds.push(item.id);
       });
-    // const hostname = window.location.hostname;
-    // const url = `http://${hostname}:3000/api/getArrItem`;
-    // fetch(url, {
-    //   method: "POST",
-    //   body: JSON.stringify(itemIds),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     // console.log(data);
-    //   });
+    const hostname = window.location.hostname;
+    const url = `http://${hostname}:3000/api/getArrItem`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(itemIds),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          let dataArr: any[] = [];
+          cartItems.map((cartItem: any) => {
+            console.log(cartItem);
+            data.map((dItem: ItemType) => {
+              if (dItem.id === cartItem.id) {
+                dataArr.push({
+                  id: cartItem.id,
+                  name: dItem.name,
+                  amount: cartItem.amount,
+                  options: cartItem.options ? cartItem.options : [],
+                });
+              }
+            });
+          });
+          setItems(dataArr);
+        }
+      });
   };
 
   useEffect(() => {
-    loadItems();
-  }, [items]);
+    if (cartItems) loadItems();
+  }, [cartItems]);
 
   const closeCart = () => {
     const cartWrapper: HTMLElement = document.querySelector(".cart-wrapper")!;
@@ -32,10 +52,29 @@ const Cart = () => {
     cartWrapper.classList.toggle("active");
   };
 
+  const clickedItem = (item: any) => {
+    dispatch(removeFromCart(item));
+  };
+
   return (
     <div className="cart-wrapper">
-      <h1>Cart</h1>
-      <pre>{JSON.stringify(items, null, 4)}</pre>
+      <div className="cart-items">
+        {items &&
+          items[0] &&
+          items.map((item: any, key: number) => {
+            return (
+              <div
+                key={key}
+                className="cart-itemWrapper"
+                onClick={() => clickedItem(item)}
+              >
+                {item.name}(id: ${item.id}), amount: {item.amount}
+              </div>
+            );
+          })}
+      </div>
+      <div className="cart-confirmButton">Confirm Order</div>
+
       <div className="cart-closeIcon" onClick={() => closeCart()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

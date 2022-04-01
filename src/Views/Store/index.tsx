@@ -107,7 +107,7 @@ export default function Store() {
                     className="addToButton"
                     onClick={() => clickedItem(item, key)}
                   >
-                    View Options
+                    {item.options ? "View Options" : "View Item"}
                   </div>
                 </div>
               );

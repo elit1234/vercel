@@ -95,7 +95,7 @@
 
 .viewingItem-optionsWrapper {
   background: var(--subForeground);
-  transition: all 0.3s ease;
+  transition: height 0.3s ease;
   height: 5rem;
   display: grid;
   place-items: center;
@@ -122,7 +122,7 @@
 .viewingItem-optionsOption {
   width: 100%;
   display: grid;
-  grid-template-columns: 5rem 1fr;
+  grid-template-columns: minmax(8rem, 0.5fr) 1fr;
   gap: 0 1rem;
   align-items: center;
   grid-template-rows: 1fr;
@@ -171,10 +171,11 @@
 .viewingItem-skeleton {
   background: var(--subForeground);
   border-radius: 40px;
+  height: 1rem;
 }
 
 .viewingItem-skeleton.image {
-  height: 30rem;
+  min-height: 25rem;
 }
 
 .viewingItem-skeleton.title {

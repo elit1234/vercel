@@ -21,7 +21,5 @@ export default async function handler(
       items.push(JSON.parse(itemData[1]));
     });
 
-  console.log(items);
-
   res.status(200).json(items);
 }

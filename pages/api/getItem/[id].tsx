@@ -12,8 +12,6 @@ export default async function handler(
   const { id } = req.query;
 
   const itemData = await redis.get(`item ${id}`);
-  console.log(itemData);
-  console.log(`item ${id}`);
 
   return res.status(200).json(itemData ? itemData : false);
 }
