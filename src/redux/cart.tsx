@@ -13,10 +13,10 @@ export const cartSlice = createSlice({
     addToCart(state, action) {
       const exItems = state.items ? state.items : [];
 
-      const { id } = action.payload;
+      const data = action.payload;
       return {
         ...state,
-        items: [...exItems, id],
+        items: [...exItems, data],
       };
     },
     clearCart(state) {

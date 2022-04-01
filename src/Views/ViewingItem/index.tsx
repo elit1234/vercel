@@ -2,8 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Select from "react-select";
+import { useAppDispatch, addToCart } from "../../redux/cart";
 
 const ViewingItem = ({ id }: any) => {
+  const dispatch = useAppDispatch();
   const [amount, setAmount] = useState<number>(1);
   const [item, setItem] = useState<ItemType>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -13,7 +15,9 @@ const ViewingItem = ({ id }: any) => {
 
   const [options, setOptions] = useState([
     {
+      id: 1,
       label: "Size",
+      required: true,
       subOptions: [
         {
           value: "small",
@@ -30,7 +34,9 @@ const ViewingItem = ({ id }: any) => {
       ],
     },
     {
+      id: 2,
       label: "Colour",
+      required: true,
       subOptions: [
         {
           value: "grey",
@@ -140,8 +146,51 @@ const ViewingItem = ({ id }: any) => {
     return newArr;
   };
 
-  const clickedAdd = () => {
-    setError(true);
+  const handleAddToCart = async () => {
+    let vals: any = [];
+    options &&
+      options.map((opt, key) => {
+        let optVal = getValues(key);
+        vals.push({
+          label: opt.label,
+          values: optVal,
+        });
+      });
+    const newObj = {
+      id: Number(id),
+      options: vals,
+    };
+    toggleToast("Successfully added!");
+    dispatch(addToCart(newObj));
+  };
+
+  const toggleToast = (message: string) => {
+    const toastEl: HTMLElement = document.getElementById("toast")!;
+    const toastDesc: HTMLElement = document.getElementById("toastDesc")!;
+    toastDesc.innerHTML = message;
+    toastEl.className = "show";
+
+    setTimeout(function () {
+      toastEl.className = toastEl.className.replace("show", "");
+    }, 7000);
+  };
+
+  const clickedAdd = async () => {
+    if (showOptions) clickedHideOptions();
+    let localError: boolean = false;
+    options &&
+      options.map((opt, key) => {
+        if (opt.required) {
+          const values = getValues(key);
+          if (!values.value) {
+            localError = true;
+          }
+        }
+      });
+    if (localError) setError(true);
+    else {
+      return handleAddToCart();
+    }
   };
 
   return (

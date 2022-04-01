@@ -15,6 +15,7 @@ import "../styles/Footer.css";
 import "../styles/globals.css";
 import "../styles/sidebar.css";
 import "../styles/Cart.css";
+import "../styles/toast.css";
 
 const Layout = dynamic(() => import("../src/Views/Components/Layout"));
 function MyApp({ Component, pageProps }: AppProps) {
@@ -52,6 +53,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider>
       <Layout>
         <Cart />
+        <div id="toast">
+          <div id="img">Icon</div>
+          <div id="toastDesc" />
+        </div>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>

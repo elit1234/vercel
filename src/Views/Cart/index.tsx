@@ -1,4 +1,33 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 const Cart = () => {
+  const items = useSelector((state: any) =>
+    state.cart && state.cart.items ? state.cart.items : []
+  );
+
+  const loadItems = async () => {
+    const itemIds: number[] = [];
+    items &&
+      items.map((item: any) => {
+        itemIds.indexOf(item.id) === -1 && itemIds.push(item.id);
+      });
+    const hostname = window.location.hostname;
+    const url = `http://${hostname}:3000/api/getArrItem`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(itemIds),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  useEffect(() => {
+    loadItems();
+  }, [items]);
+
   const closeCart = () => {
     const cartWrapper: HTMLElement = document.querySelector(".cart-wrapper")!;
 
