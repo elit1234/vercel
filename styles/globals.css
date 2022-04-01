@@ -132,7 +132,7 @@ a {
 .blackButtonOverlay {
   padding: 0.3rem;
   border: 2px solid var(--altSubForeground);
-  color: var(--altSubForegroundText);
+  color: #fff;
 }
 
 .subColour {

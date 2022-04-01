@@ -102,6 +102,7 @@
   font-size: calc(18px + 0.25vw);
   position: relative;
   border: 0.3rem solid transparent;
+  cursor: pointer;
 }
 
 .viewingItem-optionsWrapper.error {
@@ -115,6 +116,7 @@
   justify-content: space-evenly;
   gap: 5rem 0;
   padding: 4rem 0.5rem;
+  cursor: default;
 }
 
 .viewingItem-optionsOption {
@@ -144,6 +146,26 @@
   top: 0;
   right: 0;
   margin: 1rem;
+  cursor: pointer;
+}
+
+.viewingItem-closeIcon svg {
+  width: 4rem;
+  height: 4rem;
+  fill: var(--altSubForegroundText);
+}
+
+.viewingItem-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 1rem;
+}
+
+.viewingItem-option svg {
+  height: 3.5rem;
+  width: 3.5rem;
+  fill: var(--altSubForegroundText);
 }
 
 /* ---------- Loading Spinner for Image ------- */
