@@ -38,23 +38,20 @@ const ViewingItem = ({ id }: any) => {
         <meta itemProp="description" content="Item Description" />
         <meta itemProp="image" content="Image content" />
       </Head>
-      <pre>{JSON.stringify(loading, null, 4)}</pre>
       <div className="viewingItemImage">
-        {!loading ? (
-          <Image
-            src="/img/items/1.webp"
-            layout="fill"
-            quality="100"
-            onLoadingComplete={() => {
-              setLoading(false);
-              console.log("loaded");
-            }}
-          />
-        ) : (
+        {loading && (
           <div className="viewingItem-skeleton">
             <div className="viewingItem-skeleton-item" />
           </div>
         )}
+        <Image
+          src="/img/items/1.webp"
+          layout="fill"
+          quality="100"
+          onLoadingComplete={() => {
+            setLoading(false);
+          }}
+        />
       </div>
       <div className="viewingItemImages">
         <div
