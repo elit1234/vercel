@@ -7,9 +7,18 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const { id } = req.query;
+  let items: ItemType[] = [];
 
-  const itemData = await redis.get(`item *`);
+  const keys = await redis.keys("item *");
 
-  return res.status(200).json(itemData ? itemData : false);
+  const pipeline = redis.pipeline();
+  keys.forEach((key) => {
+    pipeline.get(key);
+  });
+  const data = await pipeline.exec();
+  data &&
+    data.map((itemData) => {
+      items.push(JSON.parse(itemData[1]));
+    });
+  res.status(200).json(items);
 }
