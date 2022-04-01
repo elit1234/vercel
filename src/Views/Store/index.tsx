@@ -7,6 +7,7 @@ const Footer = dynamic(() => import("../Components/Footer"));
 
 export default function Store() {
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(true);
   const [items, setItems] = useState<any>([
     {
       id: 1,
@@ -33,7 +34,9 @@ export default function Store() {
     fetch(`http://${hostname}:3000/api/getItems`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data) setItems(data);
+        setLoading(false);
         router.prefetch("/item/1");
       });
   };
@@ -81,16 +84,25 @@ export default function Store() {
         <div className="store-productCategories">Product Categories</div>
         <div className="store-products">
           {items &&
-            items.map((item, key) => {
+            items.map((item: ItemType, key: number) => {
               return (
                 <div className="store-product" key={key}>
                   <div className="store-productImage" />
-                  <div className="store-productTitle">{item.name}</div>
-                  <div className="store-productPrice">
-                    {item.price
-                      ? `$${Number(item.price / 100).toFixed(2)}`
-                      : ""}
-                  </div>
+                  {loading ? (
+                    <div className="store-skeleton name" />
+                  ) : (
+                    <div className="store-productTitle">{item.name}</div>
+                  )}
+                  {loading ? (
+                    <div className="store-skeleton price" />
+                  ) : (
+                    <div className="store-productPrice">
+                      {item.price
+                        ? `$${Number(item.price / 100).toFixed(2)}`
+                        : ""}
+                    </div>
+                  )}
+
                   <div
                     className="addToButton"
                     onClick={() => clickedItem(item, key)}

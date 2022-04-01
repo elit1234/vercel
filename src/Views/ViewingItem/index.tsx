@@ -14,46 +14,7 @@ const ViewingItem = ({ id }: any) => {
   const [values, setValues] = useState<any>();
   const [error, setError] = useState<boolean>(false);
 
-  const [options, setOptions] = useState([
-    {
-      id: 1,
-      label: "Size",
-      required: true,
-      subOptions: [
-        {
-          value: "small",
-          label: "Small",
-        },
-        {
-          value: "medium",
-          label: "Medium",
-        },
-        {
-          value: "large",
-          label: "Large",
-        },
-      ],
-    },
-    {
-      id: 2,
-      label: "Colour",
-      required: true,
-      subOptions: [
-        {
-          value: "grey",
-          label: "Grey",
-        },
-        {
-          value: "black",
-          label: "Black",
-        },
-        {
-          value: "orange",
-          label: "Orange",
-        },
-      ],
-    },
-  ]);
+  const [options, setOptions] = useState<any[]>();
 
   useEffect(() => {
     let arrs: any = [];
@@ -72,6 +33,7 @@ const ViewingItem = ({ id }: any) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setItem(data);
         setLoadingItems(false);
       });
@@ -110,7 +72,8 @@ const ViewingItem = ({ id }: any) => {
       ".viewingItem-optionsWrapper"
     )!;
 
-    const vals = options.length * 12;
+    const lengths = options && options[0] ? options.length : 0;
+    const vals = lengths * 12;
 
     optionsWrapper.style.height = `${vals}rem`;
   };
@@ -207,7 +170,7 @@ const ViewingItem = ({ id }: any) => {
       </Head>
       <div className="viewingItemImage">
         {loading && (
-          <div className="viewingItem-skeleton">
+          <div className="viewingItem-skeleton image">
             <div className="lds-spinner">
               <div></div>
               <div></div>

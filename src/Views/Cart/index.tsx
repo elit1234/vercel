@@ -10,16 +10,16 @@ const Cart = () => {
       items.map((item: any) => {
         itemIds.indexOf(item.id) === -1 && itemIds.push(item.id);
       });
-    const hostname = window.location.hostname;
-    const url = `http://${hostname}:3000/api/getArrItem`;
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(itemIds),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    // const hostname = window.location.hostname;
+    // const url = `http://${hostname}:3000/api/getArrItem`;
+    // fetch(url, {
+    //   method: "POST",
+    //   body: JSON.stringify(itemIds),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // console.log(data);
+    //   });
   };
 
   useEffect(() => {

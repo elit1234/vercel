@@ -170,8 +170,11 @@
 
 .viewingItem-skeleton {
   background: var(--subForeground);
-  height: 3rem;
   border-radius: 40px;
+}
+
+.viewingItem-skeleton.image {
+  height: 30rem;
 }
 
 .viewingItem-skeleton.title {

@@ -141,3 +141,18 @@
     padding: 12px 50px;
   }
 }
+
+.store-skeleton {
+  background: var(--altSubForeground);
+  border-radius: 40px;
+  width: 100%;
+  height: 1rem;
+}
+
+.store-skeleton.name {
+  min-width: 100%;
+  height: 1.5rem;
+}
+.store-skeleton.price {
+  width: 50%;
+}
