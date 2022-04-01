@@ -52,7 +52,7 @@
 .cart-confirmButton {
   width: 250px;
   height: 5rem;
-  background: var(--altSubForegroundText);
+  background: #000;
   margin: 0 auto;
   color: #fff;
   display: grid;
