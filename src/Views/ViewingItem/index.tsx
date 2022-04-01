@@ -48,13 +48,30 @@ const ViewingItem = ({ id }: any) => {
         <meta itemProp="image" content="Image content" />
       </Head>
       <div className="viewingItemImage">
-        {loading && <div className="viewingItem-skeleton" />}
+        {loading && (
+          <div className="viewingItem-skeleton">
+            <div className="lds-spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        )}
         <Image
           src="/img/items/1.webp"
           layout="fill"
           quality="100"
           onLoadingComplete={() => {
-            setLoading(false);
+            // setLoading(false);
           }}
         />
       </div>
