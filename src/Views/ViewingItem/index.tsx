@@ -1,11 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Select from "react-select";
 
 const ViewingItem = ({ id }: any) => {
   const [amount, setAmount] = useState<number>(1);
   const [item, setItem] = useState<ItemType>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [showOptions, setShowOptions] = useState<boolean>(false);
 
   const loadItem = async () => {
     const hostname = window.location.hostname;
@@ -125,6 +127,74 @@ const ViewingItem = ({ id }: any) => {
           </svg>
         </div>
         <div style={{ gridArea: "totalsRight" }}>{amount}</div>
+      </div>
+      <div
+        className={
+          showOptions
+            ? "viewingItem-optionsWrapper active"
+            : "viewingItem-optionsWrapper"
+        }
+        onClick={() => {
+          if (!showOptions) setShowOptions(true);
+        }}
+      >
+        {!showOptions && <h2>Options</h2>}
+        {showOptions && (
+          <>
+            <div
+              className="viewingItem-closeIcon"
+              onClick={() => setShowOptions(false)}
+            >
+              X
+            </div>
+            <div className="viewingItem-optionsOption">
+              <div className="viewingItem-optionsOptionLeft">Size</div>
+              <div className="viewingItem-optionsOptionRight">
+                <div className="viewingItem-optionsDropdown">
+                  <Select
+                    options={[
+                      {
+                        value: "small",
+                        label: "Small",
+                      },
+                      {
+                        value: "medium",
+                        label: "Medium",
+                      },
+                      {
+                        value: "large",
+                        label: "Large",
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="viewingItem-optionsOption">
+              <div className="viewingItem-optionsOptionLeft">Colour</div>
+              <div className="viewingItem-optionsOptionRight">
+                <div className="viewingItem-optionsDropdown">
+                  <Select
+                    options={[
+                      {
+                        value: "grey",
+                        label: "Grey",
+                      },
+                      {
+                        value: "black",
+                        label: "Black",
+                      },
+                      {
+                        value: "orange",
+                        label: "Orange",
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
       <div
         className="home-blackButtonWrapper blackButtonOverlay"
