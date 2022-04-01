@@ -101,7 +101,6 @@
   place-items: center;
   font-size: calc(18px + 0.25vw);
   position: relative;
-  overflow-y: hidden;
 }
 
 .viewingItem-optionsWrapper.active {
