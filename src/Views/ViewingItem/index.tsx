@@ -38,15 +38,17 @@ const ViewingItem = ({ id }: any) => {
         <meta itemProp="description" content="Item Description" />
         <meta itemProp="image" content="Image content" />
       </Head>
+      <pre>{JSON.stringify(loading, null, 4)}</pre>
       <div className="viewingItemImage">
         {!loading ? (
           <Image
-            placeholder="blur"
             src="/img/items/1.webp"
             layout="fill"
             quality="100"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOU/w8AAUMBICWqKI4AAAAASUVORK5CYII="
-            onLoad={() => setLoading(false)}
+            onLoad={() => {
+              setLoading(false);
+              console.log("loaded");
+            }}
           />
         ) : (
           <div className="viewingItem-skeleton">
