@@ -52,7 +52,6 @@ export default function Store() {
         else isItem = fItem;
       });
     }
-    console.log(notItems);
     notItems &&
       notItems.map((notItem: HTMLElement) => {
         setTimeout(() => {
@@ -63,7 +62,6 @@ export default function Store() {
         notItem.style.opacity = "0";
         notItem.style.maxWidth = "0";
       });
-    console.log(isItem);
   };
 
   return (

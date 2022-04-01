@@ -18,7 +18,6 @@ const SideBar = () => {
   const updateDimensions = () => {
     if (typeof window !== "undefined") {
       setWidth(window.innerWidth);
-      console.log(window.innerWidth);
     }
   };
   useEffect(() => {

@@ -8,6 +8,7 @@ const ViewingItem = ({ id }: any) => {
   const [item, setItem] = useState<ItemType>();
   const [loading, setLoading] = useState<boolean>(true);
   const [showOptions, setShowOptions] = useState<boolean>(false);
+  const [values, setValues] = useState<any>();
 
   const [options, setOptions] = useState([
     {
@@ -46,6 +47,17 @@ const ViewingItem = ({ id }: any) => {
     },
   ]);
 
+  useEffect(() => {
+    let arrs: any = [];
+    options &&
+      options.map((opt, key) => {
+        let intArr: any = {};
+        intArr.key = key;
+        arrs.push(intArr);
+      });
+    setValues(arrs);
+  }, [options]);
+
   const loadItem = async () => {
     const hostname = window.location.hostname;
     const url = `http://${hostname}:3000/api/getItem/${id}`;
@@ -53,7 +65,6 @@ const ViewingItem = ({ id }: any) => {
       .then((res) => res.json())
       .then((data) => {
         setItem(data);
-        console.log(data);
       });
   };
 
@@ -101,6 +112,30 @@ const ViewingItem = ({ id }: any) => {
       ".viewingItem-optionsWrapper"
     )!;
     optionsWrapper.style.height = "5rem";
+  };
+
+  const clickedSelect = (key: number, e: any) => {
+    let newArr: any = [];
+    values &&
+      values.map((val: any) => {
+        if (val.key === key) {
+          val.values = e;
+        }
+        newArr.push(val);
+      });
+
+    setValues(newArr);
+  };
+
+  const getValues = (key: number) => {
+    let newArr: any = {};
+    values &&
+      values.map((val: any) => {
+        if (val.key === key) {
+          if (val.values) newArr = val.values;
+        }
+      });
+    return newArr;
   };
 
   return (
@@ -222,6 +257,8 @@ const ViewingItem = ({ id }: any) => {
                         <Select
                           options={opt.subOptions}
                           styles={selectCustomStyles}
+                          onChange={(e) => clickedSelect(key, e)}
+                          value={getValues(key)}
                         />
                       </div>
                     </div>
