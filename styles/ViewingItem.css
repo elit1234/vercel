@@ -105,10 +105,9 @@
 }
 
 .viewingItem-optionsWrapper.active {
-  height: 25rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 5rem 0;
   padding: 4rem 0.5rem;
 }

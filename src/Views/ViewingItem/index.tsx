@@ -9,6 +9,43 @@ const ViewingItem = ({ id }: any) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
+  const [options, setOptions] = useState([
+    {
+      label: "Size",
+      subOptions: [
+        {
+          value: "small",
+          label: "Small",
+        },
+        {
+          value: "medium",
+          label: "Medium",
+        },
+        {
+          value: "large",
+          label: "Large",
+        },
+      ],
+    },
+    {
+      label: "Colour",
+      subOptions: [
+        {
+          value: "grey",
+          label: "Grey",
+        },
+        {
+          value: "black",
+          label: "Black",
+        },
+        {
+          value: "orange",
+          label: "Orange",
+        },
+      ],
+    },
+  ]);
+
   const loadItem = async () => {
     const hostname = window.location.hostname;
     const url = `http://${hostname}:3000/api/getItem/${id}`;
@@ -18,6 +55,13 @@ const ViewingItem = ({ id }: any) => {
         setItem(data);
         console.log(data);
       });
+  };
+
+  const selectCustomStyles = {
+    option: (provided: any) => ({
+      ...provided,
+      color: "black",
+    }),
   };
 
   useEffect(() => {
@@ -39,6 +83,25 @@ const ViewingItem = ({ id }: any) => {
         behavior: "smooth",
       });
   }, []);
+
+  const clickedShowOptions = () => {
+    setShowOptions(true);
+    const optionsWrapper: HTMLElement = document.querySelector(
+      ".viewingItem-optionsWrapper"
+    )!;
+
+    const vals = options.length * 12;
+
+    optionsWrapper.style.height = `${vals}rem`;
+  };
+
+  const clickedHideOptions = () => {
+    setShowOptions(false);
+    const optionsWrapper: HTMLElement = document.querySelector(
+      ".viewingItem-optionsWrapper"
+    )!;
+    optionsWrapper.style.height = "5rem";
+  };
 
   return (
     <div className="viewingItem">
@@ -73,7 +136,7 @@ const ViewingItem = ({ id }: any) => {
           layout="fill"
           quality="100"
           onLoadingComplete={() => {
-            // setLoading(false);
+            setLoading(false);
           }}
         />
       </div>
@@ -135,7 +198,7 @@ const ViewingItem = ({ id }: any) => {
             : "viewingItem-optionsWrapper"
         }
         onClick={() => {
-          if (!showOptions) setShowOptions(true);
+          if (!showOptions) clickedShowOptions();
         }}
       >
         {!showOptions && <h2>Options</h2>}
@@ -143,56 +206,28 @@ const ViewingItem = ({ id }: any) => {
           <>
             <div
               className="viewingItem-closeIcon"
-              onClick={() => setShowOptions(false)}
+              onClick={() => clickedHideOptions()}
             >
               X
             </div>
-            <div className="viewingItem-optionsOption">
-              <div className="viewingItem-optionsOptionLeft">Size</div>
-              <div className="viewingItem-optionsOptionRight">
-                <div className="viewingItem-optionsDropdown">
-                  <Select
-                    options={[
-                      {
-                        value: "small",
-                        label: "Small",
-                      },
-                      {
-                        value: "medium",
-                        label: "Medium",
-                      },
-                      {
-                        value: "large",
-                        label: "Large",
-                      },
-                    ]}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="viewingItem-optionsOption">
-              <div className="viewingItem-optionsOptionLeft">Colour</div>
-              <div className="viewingItem-optionsOptionRight">
-                <div className="viewingItem-optionsDropdown">
-                  <Select
-                    options={[
-                      {
-                        value: "grey",
-                        label: "Grey",
-                      },
-                      {
-                        value: "black",
-                        label: "Black",
-                      },
-                      {
-                        value: "orange",
-                        label: "Orange",
-                      },
-                    ]}
-                  />
-                </div>
-              </div>
-            </div>
+            {options &&
+              options.map((opt, key) => {
+                return (
+                  <div className="viewingItem-optionsOption" key={key}>
+                    <div className="viewingItem-optionsOptionLeft">
+                      {opt.label}
+                    </div>
+                    <div className="viewingItem-optionsOptionRight">
+                      <div className="viewingItem-optionsDropdown">
+                        <Select
+                          options={opt.subOptions}
+                          styles={selectCustomStyles}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
           </>
         )}
       </div>
