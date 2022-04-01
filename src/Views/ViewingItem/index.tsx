@@ -9,6 +9,7 @@ const ViewingItem = ({ id }: any) => {
   const [amount, setAmount] = useState<number>(1);
   const [item, setItem] = useState<ItemType>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [loadingItems, setLoadingItems] = useState<boolean>(true);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [values, setValues] = useState<any>();
   const [error, setError] = useState<boolean>(false);
@@ -72,6 +73,7 @@ const ViewingItem = ({ id }: any) => {
       .then((res) => res.json())
       .then((data) => {
         setItem(data);
+        setLoadingItems(false);
       });
   };
 
@@ -159,6 +161,7 @@ const ViewingItem = ({ id }: any) => {
     const newObj = {
       id: Number(id),
       options: vals,
+      amount,
     };
     toggleToast("Successfully added!");
     dispatch(addToCart(newObj));
@@ -246,10 +249,21 @@ const ViewingItem = ({ id }: any) => {
           }
         />
       </div>
-      <div className="viewingItem-title">{item && item.name}</div>
-      <div className="viewingItem-price">
-        {item && `$${Number(item.price / 100).toFixed(2)}`}
-      </div>
+      {!loadingItems && (
+        <>
+          <div className="viewingItem-price">
+            {item && `$${Number(item.price / 100).toFixed(2)}`}
+          </div>
+          <div className="viewingItem-title">{item && item.name}</div>
+        </>
+      )}
+      {loadingItems && (
+        <>
+          <div className="viewingItem-skeleton title" />
+          <div className="viewingItem-skeleton price" />
+        </>
+      )}
+
       <div className="viewingItem-totalsWrapper">
         <div
           className="viewingItem-totalsTotal"
@@ -350,12 +364,16 @@ const ViewingItem = ({ id }: any) => {
       >
         <div className="blackButton home-blackButton">Add to cart</div>
       </div>
-      <div className="viewingItem-desc">
-        Dry and ready to burn Bagged Gum firewood for a longer lasting burn.
-        This is best utilised when added to a fire built on a base of softwood
-        such as pine. The type of gum will varies throughout the season but is
-        usually a mixture of blue and red gum.
-      </div>
+      {loadingItems ? (
+        <div className="viewingItem-skeleton desc" />
+      ) : (
+        <div className="viewingItem-desc">
+          Dry and ready to burn Bagged Gum firewood for a longer lasting burn.
+          This is best utilised when added to a fire built on a base of softwood
+          such as pine. The type of gum will varies throughout the season but is
+          usually a mixture of blue and red gum.
+        </div>
+      )}
     </div>
   );
 };

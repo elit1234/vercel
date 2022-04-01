@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const items = useSelector((state: any) =>
-    state.cart && state.cart.items ? state.cart.items : []
-  );
+  const items = useSelector((state: any) => state.cart && state.cart.items);
 
   const loadItems = async () => {
     const itemIds: number[] = [];
@@ -37,6 +35,7 @@ const Cart = () => {
   return (
     <div className="cart-wrapper">
       <h1>Cart</h1>
+      <pre>{JSON.stringify(items, null, 4)}</pre>
       <div className="cart-closeIcon" onClick={() => closeCart()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

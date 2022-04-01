@@ -168,6 +168,25 @@
   fill: var(--altSubForegroundText);
 }
 
+.viewingItem-skeleton {
+  background: var(--subForeground);
+  height: 3rem;
+  border-radius: 40px;
+}
+
+.viewingItem-skeleton.title {
+  min-width: 50%;
+}
+
+.viewingItem-skeleton.price {
+  width: 30%;
+}
+
+.viewingItem-skeleton.desc {
+  min-width: 100%;
+  height: 12rem;
+}
+
 /* ---------- Loading Spinner for Image ------- */
 
 .lds-spinner {
