@@ -19,9 +19,6 @@ export default function Home() {
         const el = entry.target;
         if (entry.isIntersecting) {
           el.classList.add("is-visible");
-        } else {
-          if (el.classList.contains("home-firstService"))
-            el.classList.remove("is-visible");
         }
       });
     });
