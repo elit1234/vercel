@@ -25,18 +25,35 @@
   margin: 0 auto;
   text-align: center;
   padding: 0 1rem;
+  opacity: 0;
+}
+
+.home-sectionTitle.is-visible {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .home-paragraph {
   max-width: 600px;
   line-height: 1.3rem;
   padding: 0 1rem;
+  opacity: 0;
+}
+.home-paragraph.is-visible {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .home-blackButtonWrapper {
   cursor: pointer;
   width: 100%;
   max-width: 15rem;
+  transform: scale(0.9);
+}
+
+.home-blackButtonWrapper.is-visible {
+  transform: scale(1);
+  transition: transform 0.4s ease-in-out;
 }
 
 .home-blackButton {
@@ -72,6 +89,25 @@
   height: 450px;
   padding: 0.5rem;
   cursor: default;
+  transform: translateX(4em);
+  opacity: 0;
+}
+
+.home-firstService.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1),
+    opacity 2s ease-in-out;
+}
+
+.home-firstService:nth-child(2),
+.home-firstService:nth-child(4) {
+  transform: translateX(-4em);
+}
+
+.home-firstService:nth-child(2).is-visible,
+.home-firstService:nth-child(4).is-visible {
+  transform: translateX(0);
 }
 
 .home-firstService:hover > .home-firstServiceImageWrapper {
@@ -184,5 +220,13 @@
   }
   .home-firstService:nth-child(4) {
     margin-top: -4rem;
+  }
+
+  .home-firstService {
+    transform: translateY(4em);
+  }
+
+  .home-firstService.is-visible {
+    transform: translateY(0);
   }
 }

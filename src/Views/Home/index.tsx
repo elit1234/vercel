@@ -13,6 +13,31 @@ export default function Home() {
     router.prefetch("/store");
   }, [router]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+        } else el.classList.remove("is-visible");
+      });
+    });
+    const homeFirstServices = document.querySelectorAll(".home-firstService")!;
+
+    homeFirstServices.forEach((blk) => {
+      observer.observe(blk);
+    });
+
+    const homeSectionTitle = document.querySelector(".home-sectionTitle")!;
+    observer.observe(homeSectionTitle);
+
+    const homeParagraph = document.querySelector(".home-paragraph")!;
+    observer.observe(homeParagraph);
+
+    const blackButtonOverlay = document.querySelector(".blackButtonOverlay")!;
+    observer.observe(blackButtonOverlay);
+  }, []);
+
   return (
     <>
       <Head>
