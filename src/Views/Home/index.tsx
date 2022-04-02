@@ -19,7 +19,7 @@ export default function Home() {
         const el = entry.target;
         if (entry.isIntersecting) {
           el.classList.add("is-visible");
-        } else el.classList.remove("is-visible");
+        }
       });
     });
     const homeFirstServices = document.querySelectorAll(".home-firstService")!;
@@ -36,6 +36,18 @@ export default function Home() {
 
     const blackButtonOverlay = document.querySelector(".blackButtonOverlay")!;
     observer.observe(blackButtonOverlay);
+
+    const sectionBlueTitle = document.querySelector(".home-sectionBlueTitle")!;
+    observer.observe(sectionBlueTitle);
+    const sectionSubtitle = document.querySelector(".home-sectionSubtitle")!;
+    observer.observe(sectionSubtitle);
+
+    const dedicatedParagraphs = document.querySelectorAll(
+      ".home-dedicatedParagraph"
+    )!;
+    dedicatedParagraphs.forEach((dedicatedParagraph) =>
+      observer.observe(dedicatedParagraph)
+    );
   }, []);
 
   return (
@@ -127,14 +139,20 @@ export default function Home() {
           <div className="home-sectionSubtitle">
             We don't cut corners, we clean them!
           </div>
-          <div style={{ paddingTop: "2rem" }}>
+          <div
+            style={{ paddingTop: "2rem" }}
+            className="home-dedicatedParagraph"
+          >
             Flawless is located in Chicago serving the surrounding area with the
             highest quality residential and commercial cleaning at affordable
             and competitive rates. We have a full staff of hand-picked,
             certified, bonded, and insured professionals who treat your property
             with the same care as if it were our own.
           </div>
-          <div style={{ paddingBottom: "2rem" }}>
+          <div
+            style={{ paddingBottom: "2rem" }}
+            className="home-dedicatedParagraph"
+          >
             Flawless is located in Chicago serving the surrounding area with the
             highest quality residential and commercial cleaning at affordable
             and competitive rates. We have a full staff of hand-picked,
