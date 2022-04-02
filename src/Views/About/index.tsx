@@ -1,9 +1,23 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { useEffect } from "react";
 
 const Footer = dynamic(() => import("../Components/Footer"));
 
 export default function About() {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+        }
+      });
+    });
+
+    const homeSectionTitle = document.querySelector(".home-sectionTitle")!;
+    observer.observe(homeSectionTitle);
+  }, []);
   return (
     <>
       <Head>

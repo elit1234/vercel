@@ -43,6 +43,18 @@ export default function Store() {
 
   useEffect(() => {
     if (typeof window !== "undefined") loadItems();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+        }
+      });
+    });
+
+    const storeProducts = document.querySelectorAll(".store-product");
+    storeProducts.forEach((storeProduct) => observer.observe(storeProduct));
   }, []);
 
   const clickedItem = (item: ItemType, key: number) => {
