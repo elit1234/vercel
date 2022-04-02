@@ -174,7 +174,7 @@
 }
 
 .viewingItem-skeleton.image {
-  min-height: 25rem;
+  height: 20rem;
 }
 
 .viewingItem-skeleton.title {
