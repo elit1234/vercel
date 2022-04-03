@@ -7,9 +7,10 @@
   width: 0;
   visibility: hidden;
   opacity: 0;
-  background: var(--altSubForeground);
+  background: var(--subForeground);
   transition: all 0.5s ease;
   overflow-y: auto;
+  padding-bottom: 4rem;
 }
 
 .cart-wrapper.active {
@@ -59,4 +60,11 @@
   place-items: center;
   font-weight: bold;
   font-size: calc(16px + 0.5vw);
+  cursor: pointer;
+}
+
+.cart-closeIcon svg {
+  height: 3.5rem;
+  width: 3.5rem;
+  fill: var(--color);
 }

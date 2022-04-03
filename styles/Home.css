@@ -40,10 +40,11 @@
   line-height: 1.3rem;
   padding: 0 1rem;
   opacity: 0;
+  text-align: center;
 }
 .home-paragraph.is-visible {
   opacity: 1;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 .home-blackButtonWrapper {
@@ -55,7 +56,7 @@
 
 .home-blackButtonWrapper.is-visible {
   transform: scale(1);
-  transition: transform 0.4s ease-in-out;
+  transition: transform 1s ease-in-out;
 }
 
 .home-blackButton {
@@ -191,13 +192,13 @@
 .home-sectionBlueTitle.is-visible {
   transform: translateY(0);
   opacity: 1;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 
 .home-sectionSubtitle.is-visible {
   transform: translateY(0);
   opacity: 1;
-  transition: all 1s ease;
+  transition: all 1.4s ease;
 }
 
 .overlay-home {
@@ -216,7 +217,7 @@
 
 .home-dedicatedParagraph.is-visible {
   opacity: 1;
-  transition: all 3s 0.1s ease;
+  transition: all 2s 0.1s ease;
 }
 
 @media screen and (max-height: 700px) {

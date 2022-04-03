@@ -1,12 +1,12 @@
 .footer-wrapper {
+  background: #1e2833;
+  color: #fff;
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem 0;
-  background: #1f281e;
-  color: #fff;
-  padding: 2rem 2rem 0 2rem;
-  font-size: calc(16px + 0.25vw);
-  min-height: 50rem;
+  align-items: center;
+  gap: 2.5rem 0;
+  position: relative;
 }
 
 .footer-logo {
@@ -17,6 +17,58 @@
 }
 
 .footer-paragraph {
-  padding: 0 2rem;
+  padding: 2rem;
   line-height: 2rem;
+}
+
+.footer-topPartButton {
+  height: 3rem;
+  width: 200px;
+  cursor: pointer;
+  transition: opacity 1s ease, transform 1.5s ease;
+  background: #c3c3c3;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  opacity: 0;
+  transform: translateX(-200px);
+  border-radius: 1rem;
+}
+
+.footer-topPartButton.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-topPartButton:hover {
+  opacity: 0.5;
+}
+
+.footer-topPartButton.clicked {
+  transform: rotate(180deg);
+}
+
+.footer-subOptions {
+  display: flex;
+  gap: 0 3rem;
+  padding: 2rem 0.5rem 10rem 0.5rem;
+}
+
+.footer-subOption {
+  white-space: nowrap;
+}
+
+.footer-socials {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 2rem;
+}
+
+.footer-social svg {
+  height: 3rem;
+  width: 3rem;
+  fill: #fff;
+  cursor: pointer;
 }

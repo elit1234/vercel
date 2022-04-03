@@ -34,8 +34,12 @@ export default function Home() {
     const homeParagraph = document.querySelector(".home-paragraph")!;
     observer.observe(homeParagraph);
 
-    const blackButtonOverlay = document.querySelector(".blackButtonOverlay")!;
-    observer.observe(blackButtonOverlay);
+    const blackButtonOverlays = document.querySelectorAll(
+      ".blackButtonOverlay"
+    )!;
+    blackButtonOverlays.forEach((blackButtonOverlay) =>
+      observer.observe(blackButtonOverlay)
+    );
 
     const sectionBlueTitle = document.querySelector(".home-sectionBlueTitle")!;
     observer.observe(sectionBlueTitle);
@@ -160,7 +164,7 @@ export default function Home() {
             with the same care as if it were our own.
           </div>
           <div
-            className="blackButtonOverlay "
+            className="home-blackButtonWrapper blackButtonOverlay"
             style={{
               display: "grid",
               placeItems: "center",

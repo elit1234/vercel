@@ -1,0 +1,106 @@
+.confirm-title {
+  opacity: 0;
+}
+
+.confirm-title.is-visible {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.confirm-wrapper {
+  padding: 7rem 1rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem 0;
+}
+
+.confirm-itemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4vw 0;
+}
+
+.confirm-itemWrapper {
+  min-height: 8rem;
+  padding: 0.5rem;
+  display: grid;
+  place-items: center;
+  background: var(--subForeground);
+  max-width: 600px;
+
+  font-size: calc(18px + 0.5vw);
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: font-size 0.5s ease, min-height 0.4s ease;
+}
+
+.confirm-itemWrapper:not(.is-extended):hover {
+  font-size: calc(20px + 0.5vw);
+}
+
+.confirm-itemWrapper.is-extended {
+  min-height: 20rem;
+  cursor: default;
+}
+
+.confirm-itemOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem 0;
+  min-width: 100%;
+}
+
+.confirm-itemOption {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  width: 100%;
+}
+
+.confirm-itemOption-left {
+  font-weight: bold;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.confirm-itemOption-right {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.confirm-nextButton {
+  height: 3.5rem;
+  background: #616161;
+  max-width: 250px;
+  margin: 4rem auto 0 auto;
+  width: 100%;
+  color: #fff;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 1rem;
+}
+
+.confirm-nextButton svg {
+  opacity: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  transition: transform 2s ease, opacity 0.3s 0.5s ease;
+  fill: #fff;
+}
+
+.confirm-nextButton.is-active svg {
+  transform: translateX(15rem);
+  opacity: 0;
+}
+
+.confirm-extendedWindow {
+  width: 100%;
+}

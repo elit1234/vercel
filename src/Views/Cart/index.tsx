@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, removeFromCart } from "../../redux/cart";
 
 const Cart = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
 
   const cartItems = useSelector((state: any) => state.cart && state.cart.items);
@@ -32,6 +34,7 @@ const Cart = () => {
                   id: cartItem.id,
                   name: dItem.name,
                   amount: cartItem.amount,
+                  price: dItem.price,
                   options: cartItem.options ? cartItem.options : [],
                 });
               }
@@ -41,6 +44,19 @@ const Cart = () => {
         }
       });
   };
+
+  function toggleFunc() {
+    const firstLine = document.querySelector(".firstLine")!;
+    const secondLine = document.querySelector(".secondLine")!;
+    const thirdLine = document.querySelector(".thirdLine")!;
+
+    const sidebarWrapper: HTMLElement =
+      document.querySelector(".sidebarWrapper")!;
+    sidebarWrapper.style.width = "0";
+    firstLine.classList.remove("checked");
+    secondLine.classList.remove("checked");
+    thirdLine.classList.remove("checked");
+  }
 
   useEffect(() => {
     if (cartItems) loadItems();
@@ -54,6 +70,16 @@ const Cart = () => {
 
   const clickedItem = (item: any) => {
     dispatch(removeFromCart(item));
+  };
+
+  const clickedButton = () => {
+    if (items && items[0]) {
+      router.push("/confirm");
+    } else {
+      if (router.pathname !== "/store") router.push("/store");
+    }
+    closeCart();
+    toggleFunc();
   };
 
   return (
@@ -73,16 +99,12 @@ const Cart = () => {
             );
           })}
       </div>
-      <div className="cart-confirmButton">Confirm Order</div>
+      <div className="cart-confirmButton" onClick={() => clickedButton()}>
+        {items && items[0] ? "Confirm Order" : "Add items"}
+      </div>
 
       <div className="cart-closeIcon" onClick={() => closeCart()}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="48px"
-          viewBox="0 0 24 24"
-          width="48px"
-          fill="#000000"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path d="M0 0h24v24H0V0z" fill="none" />
           <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
         </svg>
