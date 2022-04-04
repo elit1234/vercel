@@ -104,3 +104,7 @@
 .confirm-extendedWindow {
   width: 100%;
 }
+
+.confirm-noOptions {
+  text-align: center;
+}

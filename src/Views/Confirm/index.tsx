@@ -116,8 +116,10 @@ export default function Confirm() {
 
   const userClickedNext = () => {
     setClickedNext(true);
-    router.push("/your-details");
-    setTimeout(() => {}, 2000);
+
+    setTimeout(() => {
+      router.push("/your-details");
+    }, 1800);
   };
 
   return (
