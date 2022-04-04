@@ -17,6 +17,8 @@ import "../styles/sidebar.css";
 import "../styles/Cart.css";
 import "../styles/Confirm.css";
 import "../styles/YourDetails.css";
+import "../styles/About.css";
+
 import "../styles/toast.css";
 
 const Layout = dynamic(() => import("../src/Views/Components/Layout"));

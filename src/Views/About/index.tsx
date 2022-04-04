@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import Image from "next/image";
 import { useEffect } from "react";
 
 const Footer = dynamic(() => import("../Components/Footer"));
@@ -15,8 +16,8 @@ export default function About() {
       });
     });
 
-    const homeSectionTitle = document.querySelector(".home-sectionTitle")!;
-    observer.observe(homeSectionTitle);
+    const aboutLandingText = document.querySelector(".about-landingText")!;
+    observer.observe(aboutLandingText);
   }, []);
   return (
     <>
@@ -27,18 +28,18 @@ export default function About() {
         <meta itemProp="description" content="Item Description" />
         <meta itemProp="image" content="Image content" />
       </Head>
-      <div className="home-Wrapper">
-        <div className="home-Top">
-          <div className="overlay-home topOverlay">
-            <div className="home-sectionTitle">About Us</div>
-            <div className="home-paragraph">
-              Orci varius natoque penatibus et magnis dis parturient montes,
-              nascetur ridiculus mus. Mauris vel eros cursus, malesuada diam
-              dictum, volutpat nulla. Quisque in orci a lorem egestas maximus
-              vitae sed nisl.
-            </div>
-          </div>
+      <div className="about-Wrapper">
+        <div className="about-landingOverlay">
+          <div className="about-landingText">About Us</div>
         </div>
+        <Image
+          src="/img/home-top.webp"
+          alt="Top Picture"
+          layout="fill"
+          objectFit="cover"
+          className="about-landingImage"
+          quality={100}
+        />
       </div>
       <Footer />
     </>

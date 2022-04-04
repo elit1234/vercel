@@ -79,7 +79,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   height: 5rem;
   display: grid;
   place-items: center;
@@ -95,7 +95,7 @@ a {
   left: 0;
   margin: 1rem;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3;
 }
 .cartIcon-outer > svg {
   fill: var(--color);
@@ -109,7 +109,7 @@ a {
   margin-top: 1rem;
   margin-left: 6rem;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3;
 }
 
 .homeIcon-outer > svg {
