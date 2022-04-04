@@ -18,6 +18,19 @@
   gap: 2rem 0;
 }
 
+.homeFirstButton.shrink {
+  transform: scale(0.5) !important;
+  transition: transform 0.2s ease;
+}
+.homeSecondButton.shrink {
+  transform: scale(0.5) !important;
+  transition: transform 0.2s ease;
+}
+.homeThirdButton.shrink {
+  transform: scale(0.5) !important;
+  transition: transform 0.2s ease;
+}
+
 .home-landingImage {
   height: 15em;
   width: 100%;

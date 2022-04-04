@@ -54,6 +54,11 @@ export default function Home() {
     );
   }, []);
 
+  const toggleClass = (target: string, className: string) => {
+    const el = document.querySelectorAll(target)!;
+    el && el.forEach((element) => element.classList.toggle(className));
+  };
+
   return (
     <>
       <Head>
@@ -73,8 +78,13 @@ export default function Home() {
             ut odio at neque dictum dignissim.
           </div>
           <div
-            className="home-blackButtonWrapper blackButtonOverlay"
-            onClick={() => router.push("/store")}
+            className="home-blackButtonWrapper blackButtonOverlay homeFirstButton"
+            onClick={() => {
+              toggleClass(".homeFirstButton", "shrink");
+              setTimeout(() => {
+                router.push("/store");
+              }, 500);
+            }}
           >
             <div className="blackButton home-blackButton">Shop Now</div>
           </div>
@@ -134,12 +144,17 @@ export default function Home() {
           </div>
         </div>
         <div
-          className="home-blackButtonWrapper blackButtonOverlay"
+          className="home-blackButtonWrapper blackButtonOverlay homeSecondButton"
           style={{ margin: "0 auto" }}
         >
           <div
             className="blackButton home-blackButton"
-            onClick={() => router.push("/about")}
+            onClick={() => {
+              toggleClass(".homeSecondButton", "shrink");
+              setTimeout(() => {
+                router.push("/about");
+              }, 500);
+            }}
           >
             All Our Services
           </div>
@@ -173,11 +188,17 @@ export default function Home() {
               treat your property with the same care as if it were our own.
             </div>
             <div
-              className="home-blackButtonWrapper blackButtonOverlay"
+              className="home-blackButtonWrapper blackButtonOverlay homeThirdButton"
               style={{
                 display: "grid",
                 placeItems: "center",
                 margin: "0 auto 4rem auto",
+              }}
+              onClick={() => {
+                toggleClass(".homeThirdButton", "shrink");
+                setTimeout(() => {
+                  router.push("/about");
+                }, 500);
               }}
             >
               <div className="blackButton home-blackButton">More About Us</div>
