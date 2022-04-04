@@ -2,26 +2,62 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 1rem 3rem;
-  grid-template-areas: "firstName firstName" "lastName lastName" "emailAddress emailAddress" "mobileNumber mobileNumber";
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  grid-template-areas: "firstName firstName" "lastName lastName" "emailAddress emailAddress" "mobileNumber mobileNumber" "questionArea questionArea";
 }
 
 @media (min-width: 800px) {
   .yourDetails-form {
-    grid-template-areas: "firstName lastName" "emailAddress mobileNumber";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "firstName lastName emailAddress emailAddress" "mobileNumber mobileNumber questionArea questionArea";
   }
+}
+
+.yourDetails-question {
+  grid-area: questionArea;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  justify-items: center;
+
+  grid-template-areas:
+    "questionLeft answer"
+    "questionLeft answer";
+}
+
+.yourDetails-questionLeft {
+  grid-area: questionLeft;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.yourDetails-questionWarn {
+  opacity: 0.6;
+  font-size: 12px;
+}
+
+.yourDetails-questionText {
+}
+
+.yourDetails-input.answer {
+  text-align: center;
 }
 
 .yourDetails-input {
   height: 3.5rem;
-  background: #fff;
+  background: var(--subForeground);
   width: 100%;
   outline: none;
   border: none;
-  color: #000;
   padding: 0 1rem;
   font-size: 16px;
+  border-radius: 0.5rem;
 }
 
 .yourDetails-input::placeholder {

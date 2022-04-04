@@ -130,7 +130,6 @@ const ViewingItem = ({ id }: any) => {
     };
     toggleToast("Successfully added!");
     dispatch(addToCart(newObj));
-    setValues(undefined);
     setAmount(1);
   };
 
