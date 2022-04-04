@@ -39,6 +39,7 @@ export default function About() {
           objectFit="cover"
           className="about-landingImage"
           quality={100}
+          priority={true}
         />
       </div>
       <Footer />

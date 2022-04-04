@@ -87,6 +87,7 @@ export default function Home() {
             objectFit="cover"
             className="home-landingImage"
             quality={100}
+            priority={true}
           />
         </div>
 
