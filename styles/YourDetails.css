@@ -2,15 +2,15 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
-  grid-template-areas: "firstName firstName" "lastName lastName" "emailAddress emailAddress" "mobileNumber mobileNumber" "questionArea questionArea";
+  grid-template-areas: "firstName firstName" "lastName lastName" "emailAddress emailAddress" "mobileNumber mobileNumber" "questionArea questionArea" "submitArea submitArea";
 }
 
 @media (min-width: 800px) {
   .yourDetails-form {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "firstName lastName emailAddress emailAddress" "mobileNumber mobileNumber questionArea questionArea";
+    grid-template-areas: "firstName lastName emailAddress emailAddress" "mobileNumber mobileNumber questionArea questionArea" "submitArea submitArea . .";
   }
 }
 
@@ -28,6 +28,28 @@
     "questionLeft answer";
 }
 
+.yourDetails-submit {
+  grid-area: submitArea;
+  width: 100%;
+  height: 4.5rem;
+  background: var(--altSubForeground);
+  color: var(--background);
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+  font-size: calc(18px + 0.25vw);
+  max-width: 320px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: opacity 0.6s ease, max-width 1s ease;
+}
+
+/* .addToButton:not([disabled]):active { */
+
+.yourDetails-submit:hover {
+  opacity: 0.6;
+}
+
 .yourDetails-questionLeft {
   grid-area: questionLeft;
   display: flex;
@@ -42,7 +64,8 @@
   font-size: 12px;
 }
 
-.yourDetails-questionText {
+.yourDetails-questionText span {
+  font-weight: bold;
 }
 
 .yourDetails-input.answer {
@@ -62,4 +85,77 @@
 
 .yourDetails-input::placeholder {
   font-size: 14px;
+}
+
+.yourDetails-submit.submitting {
+  max-width: 180px;
+  place-items: initial;
+  padding: 0 !important;
+}
+
+.yourDetails-submit-loading {
+  position: relative;
+  display: flex;
+  width: 4rem;
+  margin: 0 auto;
+}
+
+.yourDetails-submit-loading div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.yourDetails-submit-loading div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+.yourDetails-wrapper {
+  padding: 7rem 1rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem 0;
+  transition: transform 1s ease;
+}
+
+.yourDetails-wrapper.move-left {
+  transform: translateX(-100vw);
+  height: 0;
+}
+
+.yourDetails-confirmWrapper {
+  transform: translateX(100vw);
+  opacity: 0;
+  transition: transform 1s ease;
+}
+
+.yourDetails-confirmWrapper.move-left {
+  transform: translateX(0);
+  opacity: 1;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+  padding: 0 2rem;
 }

@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch, removeFromCart } from "../../redux/cart";
 
 const Cart = () => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
 
   const cartItems = useSelector((state: any) => state.cart && state.cart.items);
   const [items, setItems] = useState<any>(null);
@@ -68,10 +66,6 @@ const Cart = () => {
     cartWrapper.classList.toggle("active");
   };
 
-  const clickedItem = (item: any) => {
-    dispatch(removeFromCart(item));
-  };
-
   const clickedButton = () => {
     if (items && items[0]) {
       router.push("/confirm");
@@ -89,18 +83,15 @@ const Cart = () => {
           items[0] &&
           items.map((item: any, key: number) => {
             return (
-              <div
-                key={key}
-                className="cart-itemWrapper"
-                onClick={() => clickedItem(item)}
-              >
-                {item.name}(id: ${item.id}), amount: {item.amount}
+              <div key={key} className="cart-itemWrapper">
+                <div className="cart-itemName">{item.name}</div>
+                <div className="cart-itemAmount">x{item.amount}</div>
               </div>
             );
           })}
       </div>
       <div className="cart-confirmButton" onClick={() => clickedButton()}>
-        {items && items[0] ? "Confirm Order" : "Add items"}
+        {items && items[0] ? "Confirm & Adjust Order" : "Add items"}
       </div>
 
       <div className="cart-closeIcon" onClick={() => closeCart()}>

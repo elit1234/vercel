@@ -3,6 +3,7 @@ interface ItemType {
   name: string;
   price?: number;
   options?: any[];
+  amount?: number;
 }
 
 interface CartReduxState {

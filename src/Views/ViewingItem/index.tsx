@@ -34,7 +34,6 @@ const ViewingItem = ({ id }: any) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setItem(data);
         if (data.options) setOptions(data.options);
         setLoadingItems(false);
@@ -239,7 +238,7 @@ const ViewingItem = ({ id }: any) => {
         {!loadingItems && (
           <>
             <div className="viewingItem-price">
-              {item && `$${Number(item.price / 100).toFixed(2)}`}
+              {item && `$${Number(item.price && item.price / 100).toFixed(2)}`}
             </div>
             <div className="viewingItem-title">{item && item.name}</div>
           </>

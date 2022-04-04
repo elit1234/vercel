@@ -98,7 +98,7 @@ a {
   z-index: 3;
 }
 .cartIcon-outer > svg {
-  fill: var(--color);
+  fill: var(--altSubForegroundText);
   transition: all 0.5s ease;
 }
 

@@ -70,7 +70,7 @@ export default function Home() {
       </Head>
       <div className="home-Wrapper">
         <div className="home-landingOverlay">
-          <div className="home-sectionTitle">Business Name Goes Here</div>
+          <div className="home-sectionTitle">Welcome to Biz Name</div>
           <div className="home-paragraph">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             faucibus id eros eget malesuada. Mauris cursus rhoncus fringilla.

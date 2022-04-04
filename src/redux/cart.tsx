@@ -34,11 +34,16 @@ export const cartSlice = createSlice({
     },
     removeFromCart(state, action) {
       const exItems = state.items ? state.items : [];
-      const filtered =
-        exItems &&
-        exItems.filter((item: ItemType) => item.id !== action.payload.id);
+      const newArr: ItemType[] = [];
+      exItems &&
+        exItems.map((exItem, key) => {
+          if (key !== action.payload) newArr.push(exItem);
+        });
+      // const filtered =
+      //   exItems &&
+      //   exItems.filter((item: ItemType) => item.id !== action.payload.id);
       return {
-        items: filtered,
+        items: newArr,
       };
     },
   },

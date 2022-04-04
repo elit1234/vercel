@@ -34,6 +34,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: font-size 0.5s ease, min-height 0.4s ease;
+
+  position: relative;
 }
 
 .confirm-itemWrapper:not(.is-extended):hover {
@@ -68,8 +70,16 @@
 
 .confirm-itemOption-right {
   width: 100%;
-  margin: 0 auto;
   text-align: center;
+  position: relative;
+}
+
+.confirm-itemOption-rightEdit {
+  fill: var(--altSubForegroundText);
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }
 
 .confirm-nextButton {
@@ -105,6 +115,33 @@
   width: 100%;
 }
 
+.confirm-closeWindow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+}
+
+.confirm-closeWindow svg {
+  height: 3.5rem;
+  width: 3.5rem;
+  fill: var(--altSubForegroundText);
+  cursor: pointer;
+}
+
+.confirm-deleteWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+}
+
+.confirm-deleteWindow svg {
+  height: 3.5rem;
+  width: 3.5rem;
+  fill: var(--altSubForegroundText);
+  cursor: pointer;
+}
 .confirm-noOptions {
   text-align: center;
 }
