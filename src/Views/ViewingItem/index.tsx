@@ -212,11 +212,14 @@ const ViewingItem = ({ id }: any) => {
           )}
           <Image
             src="/img/items/1.webp"
-            layout="fill"
+            layout="responsive"
             quality="100"
+            width="300"
+            height="300"
             onLoadingComplete={() => {
               setLoading(false);
             }}
+            priority={true}
           />
         </div>
         <div className="viewingItemImages">
