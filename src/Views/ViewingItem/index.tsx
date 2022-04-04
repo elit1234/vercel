@@ -218,7 +218,6 @@ const ViewingItem = ({ id }: any) => {
             onLoadingComplete={() => {
               setLoading(false);
             }}
-            priority={true}
           />
         </div>
         <div className="viewingItemImages">
