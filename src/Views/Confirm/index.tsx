@@ -28,7 +28,9 @@ export default function Confirm() {
     if (!isExtended(id)) {
       const element = document.getElementById(id)!;
       element.classList.add("is-extended");
-      addToExtended(Number(id));
+      setTimeout(() => {
+        addToExtended(Number(id));
+      }, 100);
     }
   };
 
