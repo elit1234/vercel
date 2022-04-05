@@ -39,14 +39,12 @@ export const cartSlice = createSlice({
         exItems.map((exItem, key) => {
           if (key !== action.payload) newArr.push(exItem);
         });
-      // const filtered =
-      //   exItems &&
-      //   exItems.filter((item: ItemType) => item.id !== action.payload.id);
       return {
         items: newArr,
       };
     },
   },
+
   extraReducers: {
     [HYDRATE]: (state, { payload }) => ({
       ...state,

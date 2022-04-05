@@ -8,4 +8,13 @@ interface ItemType {
 
 interface CartReduxState {
   items?: ItemType[];
+  userDetails?: UserInputType;
+}
+
+interface UserInputType {
+  firstName: string;
+  lastName: string;
+  email: string;
+  mobile: string;
+  answer: number;
 }

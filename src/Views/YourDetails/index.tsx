@@ -1,11 +1,13 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import words from "./words.json";
 
 const Footer = dynamic(() => import("../Components/Footer"));
 
 export default function YourDetails() {
+  const items = useSelector((state: any) => state.cart.items);
   const [values, setValues] = useState({
     firstName: "",
     lastName: "",
@@ -54,13 +56,44 @@ export default function YourDetails() {
     }
     return false;
   };
+  /*
+
+const loadItem = async () => {
+    const hostname = window.location.hostname;
+    const url = `http://${hostname}:3000/api/getItem/${id}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setItem(data);
+        if (data.options) setOptions(data.options);
+        setLoadingItems(false);
+      });
+  };
+
+  */
+
+  const submitForm = () => {
+    const formValues = {
+      items,
+      values,
+    };
+    const hostname = window.location.hostname;
+    const url = `http://${hostname}:3000/api/submitCart`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(formValues),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   const userClickedSubmit = () => {
     let localSuccess = false;
     if (!submitting) {
       setSubmitting(true);
       const validValues = valuesCheck();
-      console.log(validValues);
       if (validValues) localSuccess = true;
 
       setTimeout(() => {
@@ -68,6 +101,8 @@ export default function YourDetails() {
         if (localSuccess) setSuccess(true);
       }, 1500);
       if (localSuccess) {
+        submitForm();
+
         setTimeout(() => {
           const el = document.querySelector(".yourDetails-wrapper")!;
           const confirmEl = document.querySelector(

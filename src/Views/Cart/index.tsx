@@ -91,7 +91,7 @@ const Cart = () => {
           })}
       </div>
       <div className="cart-confirmButton" onClick={() => clickedButton()}>
-        {items && items[0] ? "Confirm & Adjust Order" : "Add items"}
+        {items && items[0] ? "Confirm/Edit Order" : "Add items"}
       </div>
 
       <div className="cart-closeIcon" onClick={() => closeCart()}>
