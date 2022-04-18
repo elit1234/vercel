@@ -14,9 +14,10 @@ const ViewingItemFunc: NextPage = ({ item }) => {
 export default ViewingItemFunc;
 
 export async function getServerSideProps(context: any) {
+  const { id } = context.params;
   const hostname = process.env.SELF_URL || null;
   const loadItem = async () => {
-    const url = `http://${hostname}:3000/api/getItem/10`;
+    const url = `http://${hostname}:3000/api/getItem/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     return data;
