@@ -48,10 +48,12 @@
 
 .viewingItem-title {
   font-weight: 600;
+  min-height: 3.5rem;
 }
 
 .viewingItem-price {
   letter-spacing: 0.1rem;
+  min-height: 3.5rem;
 }
 
 .viewingItem-totalsWrapper {
@@ -92,6 +94,17 @@
   text-align: center;
 }
 
+
+.viewingItem-desc.editing{
+  margin: 0 auto;
+  line-height: initial;
+  text-align: start;
+  width: 100%;
+  max-width: 700px;
+  min-height: 200px;
+  min-width: 280px;
+}
+
 .viewingItem-optionsWrapper {
   background: var(--subForeground);
   transition: height 0.3s ease;
@@ -123,10 +136,15 @@
   display: grid;
   grid-template-columns: minmax(8rem, 0.5fr) 1fr;
   gap: 0 1rem;
-  align-items: center;
   grid-template-rows: 1fr;
   grid-template-areas: "optionsOptionLeft optionsOptionRight";
   padding: 0 1rem;
+  
+}
+
+.viewingItem-optionsOption.editing {
+  
+  grid-template-columns: 3rem minmax(8rem, 0.5fr) 1fr;
 }
 
 .viewingItem-optionsOptionLeft {
@@ -269,4 +287,19 @@
   100% {
     opacity: 0;
   }
+}
+
+.viewingItem-editingTitle {
+  font-style: italic;
+  font-weight: bold;
+  font-size: calc(18px + 0.25vw);
+  opacity: 0.4;
+}
+
+
+.viewingItem-editButton {
+  
+  height: 2rem;
+  width: 2rem;
+  fill: var(--background);
 }

@@ -5,12 +5,11 @@ import Select from "react-select";
 import { useAppDispatch, addToCart } from "../../redux/cart";
 import Footer from "../Components/Footer";
 
-const ViewingItem = ({ id }: any) => {
+const ViewingItem = ({ item }) => {
   const dispatch = useAppDispatch();
   const [amount, setAmount] = useState<number>(1);
-  const [item, setItem] = useState<ItemType>();
-  const [loading, setLoading] = useState<boolean>(true);
-  const [loadingItems, setLoadingItems] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [loadingItems, setLoadingItems] = useState<boolean>(false);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [values, setValues] = useState<any>();
   const [error, setError] = useState<boolean>(false);
@@ -28,28 +27,12 @@ const ViewingItem = ({ id }: any) => {
     setValues(arrs);
   }, [options]);
 
-  const loadItem = async () => {
-    const hostname = window.location.hostname;
-    const url = `http://${hostname}:3000/api/getItem/${id}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setItem(data);
-        if (data.options) setOptions(data.options);
-        setLoadingItems(false);
-      });
-  };
-
   const selectCustomStyles = {
     option: (provided: any) => ({
       ...provided,
       color: "black",
     }),
   };
-
-  useEffect(() => {
-    if (id) loadItem();
-  }, [id]);
   const clickedMore = () => {
     setAmount(amount + 1);
   };
@@ -68,7 +51,6 @@ const ViewingItem = ({ id }: any) => {
   }, []);
 
   const clickedShowOptions = () => {
-    setShowOptions(true);
     const optionsWrapper: HTMLElement = document.querySelector(
       ".viewingItem-optionsWrapper"
     )!;
@@ -77,6 +59,9 @@ const ViewingItem = ({ id }: any) => {
     const vals = lengths * 12;
 
     optionsWrapper.style.height = `${vals}rem`;
+    setTimeout(() => {
+      setShowOptions(true);
+    }, 100);
   };
 
   const clickedHideOptions = () => {

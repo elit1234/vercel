@@ -8,28 +8,16 @@ const Footer = dynamic(() => import("../Components/Footer"));
 export default function Store() {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(true);
-  const [items, setItems] = useState<any>([
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
-  ]);
+  const [items, setItems] = useState<any>([]);
 
   const loadItems = async () => {
+    const blankArr: ItemType[] = [];
+    Array.from(Array(8), (e, i) => {
+      blankArr.push({
+        id: Number(i),
+      });
+    });
+    setItems(blankArr);
     const hostname = window.location.hostname;
     fetch(`http://${hostname}:3000/api/getItems`)
       .then((res) => res.json())
@@ -43,7 +31,8 @@ export default function Store() {
 
   useEffect(() => {
     if (typeof window !== "undefined") loadItems();
-
+  }, []);
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const el = entry.target;
@@ -55,7 +44,7 @@ export default function Store() {
 
     const storeProducts = document.querySelectorAll(".store-product");
     storeProducts.forEach((storeProduct) => observer.observe(storeProduct));
-  }, []);
+  });
 
   const clickedItem = (item: ItemType, key: number) => {
     let notItems: any = [];

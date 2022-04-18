@@ -238,7 +238,25 @@ export default function Confirm() {
               );
             })}
         </div>
-
+        <div className="confirm-infoWrapper">
+          <div className="confirm-infoTitle">Order info</div>
+          <div className="confirm-infoRow">
+            <div className="confirm-infoSubtitle">Subtotal</div>
+            <div className="confirm-infoAmount">$1234</div>
+          </div>{" "}
+          <div className="confirm-infoRow">
+            <div className="confirm-infoSubtitle">Subtotal</div>
+            <div className="confirm-infoAmount">$1234</div>
+          </div>{" "}
+          <div className="confirm-infoRow">
+            <div className="confirm-infoSubtitle">Shipping Cost</div>
+            <div className="confirm-infoAmount">$23</div>
+          </div>{" "}
+          <div className="confirm-infoRow">
+            <div className="confirm-infoSubtitle">Total</div>
+            <div className="confirm-infoAmount">$23</div>
+          </div>
+        </div>
         <div
           className={
             clickedNext ? "confirm-nextButton is-active" : "confirm-nextButton"

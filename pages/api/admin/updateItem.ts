@@ -7,9 +7,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const { id } = req.query;
+  const body = req.body;
+  const data = JSON.parse(body);
+  const { id, name, price }: ItemType = data;
 
-  const itemData = await redis.get(`item ${id}`);
+  await redis.set(`item ${id}`, body);
 
-  return res.status(200).json(itemData ? itemData : false);
+  return res.status(200).json(true);
 }

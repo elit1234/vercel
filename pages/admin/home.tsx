@@ -4,17 +4,18 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-const AdminLogin = dynamic(() => import("../../src/Views/Admin/Login"));
+const AdminHome = dynamic(() => import("../../src/Views/Admin/Home"));
 
-const AdminLoginFunc: NextPage = () => {
+const AdminHomeFunc: NextPage = () => {
   const router = useRouter();
   const user = useSelector((state: any) => state.user.username);
 
   useEffect(() => {
-    if (user) router.push("/admin/home");
+    if (!user) router.push("/");
   }, [user]);
-  if (!user) return <AdminLogin />;
+
+  if (user) return <AdminHome />;
   else return null;
 };
 
-export default AdminLoginFunc;
+export default AdminHomeFunc;

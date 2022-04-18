@@ -144,7 +144,7 @@ a {
   /* Your default theme */
   --background: white;
   --foreground: #d9d9d9;
-  --subForeground: rgba(211, 210, 210, 1);
+  --subForeground: rgba(156, 156, 157, 1);
   --altSubForeground: #414141;
   --altSubForegroundText: #000;
   --overlay: rgba(255, 255, 255, 0.5);

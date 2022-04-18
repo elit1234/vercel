@@ -19,6 +19,9 @@ import "../styles/Confirm.css";
 import "../styles/YourDetails.css";
 import "../styles/About.css";
 
+import "../styles/Admin/Login.css";
+import "../styles/Admin/Home.css";
+
 import "../styles/toast.css";
 
 const Layout = dynamic(() => import("../src/Views/Components/Layout"));

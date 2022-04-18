@@ -11,6 +11,7 @@ export default async function handler(
       id: 1,
       name: "Dry bagged pine",
       price: 150,
+      quantity: 10,
       options: [
         {
           label: "Size",
@@ -53,46 +54,55 @@ export default async function handler(
     {
       id: 2,
       name: "Second",
+      quantity: 15,
       price: 300,
     },
     {
       id: 3,
       name: "Third",
+      quantity: 20,
       price: 500,
     },
     {
       id: 4,
       name: "Fourth",
+      quantity: 25,
       price: 10000,
     },
     {
       id: 5,
       name: "Fifth",
+      quantity: 30,
       price: 50,
     },
     {
       id: 6,
       name: "Six6h",
+      quantity: 10,
       price: 600,
     },
     {
-      id: 6,
+      id: 7,
       name: "Six6h",
+      quantity: 10,
       price: 600,
     },
     {
-      id: 6,
+      id: 8,
       name: "Six6h",
+      quantity: 10,
       price: 600,
     },
     {
-      id: 6,
+      id: 9,
       name: "Six6h",
+      quantity: 10,
       price: 600,
     },
     {
-      id: 6,
+      id: 10,
       name: "Six6h",
+      quantity: 10,
       price: 600,
     },
   ];

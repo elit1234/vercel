@@ -5,11 +5,14 @@ import toggleFunc from "./toggleFunc";
 import { useEffect, useState } from "react";
 import SidebarDark from "./SidebarDark";
 import SidebarCart from "./SidebarCart";
+import { useSelector } from "react-redux";
 
 const DarkIcon = dynamic(() => import("../DarkIcon"));
 
 const SideBar = () => {
   const router = useRouter();
+  const user = useSelector((state: any) => state.user);
+  const isAdmin = user && user.username && user.admin;
   const path = router.pathname;
   const [width, setWidth] = useState(
     typeof window === "undefined" ? 0 : window.innerWidth
@@ -55,6 +58,20 @@ const SideBar = () => {
           Store
         </a>
       </Link>
+      {isAdmin && (
+        <Link href="/admin/home" passHref>
+          <a
+            onClick={() => toggleFunc()}
+            className={
+              path.startsWith("/admin")
+                ? "sideBar-option active"
+                : "sideBar-option"
+            }
+          >
+            Admin
+          </a>
+        </Link>
+      )}
       {width && width < 600 && <DarkIcon sideBar={true} />}
       {width && width < 600 && (
         <>

@@ -11,6 +11,13 @@ interface CartReduxState {
   userDetails?: UserInputType;
 }
 
+interface UserReduxState {
+  id?: number;
+  username?: string;
+  admin?: number;
+  email?: string;
+}
+
 interface UserInputType {
   firstName: string;
   lastName: string;

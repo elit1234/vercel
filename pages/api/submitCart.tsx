@@ -2,24 +2,39 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import sqliteDb from "./lib/sqliteDb";
+import redis from "./lib/redis";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-  console.log(ip);
-  const { items, values } = JSON.parse(req.body);
-  console.log(values);
+  const orderIp = `order-${ip}`;
 
-  const createTable = `CREATE TABLE IF NOT EXISTS orders (
+  const lastOrder = await redis.get(orderIp);
+  if (!lastOrder) {
+    const { items, values } = JSON.parse(req.body);
+    const { firstName, lastName, email, mobile, answer } = values;
+
+    const createTable = `CREATE TABLE IF NOT EXISTS orders (
     order_id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    email TEXT NOT NULL,
+    mobile TEXT NOT NULL,
+    items TEXT NOT NULL
  )`;
-  sqliteDb.exec(createTable);
+    sqliteDb.exec(createTable);
 
-  const stmt = sqliteDb.prepare("INSERT INTO orders (name) VALUES (?)");
-  const info = stmt.run("First order Name");
-  sqliteDb.close();
-  res.status(200).json(true);
+    sqliteDb
+      .prepare(
+        "INSERT INTO orders (firstName, lastName, email, mobile, items) VALUES (?, ?, ?, ?, ?)"
+      )
+      .run(firstName, lastName, email, mobile, JSON.stringify(items));
+
+    const time = new Date();
+    redis.set(orderIp, time.getTime());
+    sqliteDb.close();
+  }
+  res.status(200).json(!lastOrder);
 }

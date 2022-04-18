@@ -1,0 +1,30 @@
+.admin-home-container {
+min-height: calc(100vh - 8rem);
+    padding: 8rem 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-home-itemsWrapper {
+    min-height: 60vh;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--foreground);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 0;
+    padding: 1rem;
+    
+}
+
+.admin-home-item {
+    min-height: 4rem;
+    background: var(--subForeground);
+    font-weight: bold;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    font-size: calc(18px + 0.25vw);
+}

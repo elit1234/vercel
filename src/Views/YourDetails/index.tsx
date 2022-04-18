@@ -2,11 +2,13 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useAppDispatch, clearCart } from "../../redux/cart";
 import words from "./words.json";
 
 const Footer = dynamic(() => import("../Components/Footer"));
 
 export default function YourDetails() {
+  const dispatch = useAppDispatch();
   const items = useSelector((state: any) => state.cart.items);
   const [values, setValues] = useState({
     firstName: "",
@@ -18,6 +20,7 @@ export default function YourDetails() {
   const [number, setNumber] = useState<any[]>([]);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
+  const [failed, setFailed] = useState<boolean>(false);
   useEffect(() => {
     function getRandomInt(min: number, max: number) {
       min = Math.ceil(min);
@@ -72,6 +75,8 @@ const loadItem = async () => {
 
   */
 
+  console.log(items);
+
   const submitForm = () => {
     const formValues = {
       items,
@@ -85,7 +90,10 @@ const loadItem = async () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data === false) {
+          setFailed(true);
+        }
+        dispatch(clearCart());
       });
   };
 
@@ -200,8 +208,15 @@ const loadItem = async () => {
         </div>
       </div>
       <div className="yourDetails-confirmWrapper">
-        <h1>Thanks for your order!</h1>
-        <h2>We will be in touch with you at {values.email} very shortly.</h2>
+        <h1>
+          {failed
+            ? "You have recently placed an order with us!"
+            : "Thanks for your order!"}
+        </h1>
+        <h2>
+          We will be in touch with you at {failed ? "your email" : values.email}{" "}
+          very shortly.
+        </h2>
       </div>
       <Footer />
     </div>

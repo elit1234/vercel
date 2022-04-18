@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 
 const Home = dynamic(() => import("../src/Views/Home"));
 
-const HomeFunc: NextPage = () => <Home />;
+const HomeFunc: NextPage = () => {
+  return <Home />;
+};
 
 export default HomeFunc;
